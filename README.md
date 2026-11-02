@@ -60,6 +60,19 @@ L_1 \cap L_2 = \left\{ \left( \frac{b_1 c_2 - c_1 b_2}{a_1 b_2 - b_1 a_2},\ \fra
 
 ### 2. Parametrización
 
+i) Se tiene que la recta $`L_1`$ está definida por los puntos $`P_1, P_2 \in \mathbb{R}^{2}`$, que tienen la siguiente forma:
+
+```math
+P_1 = (a_1, b_1) \wedge P_2 = (a_2, b_2)
+```
+
+ii) La forma paramétrica de $`L_1`$ está dada por el vector director $`\vec{v_d}`$, el punto de paso $`P = (a, b)`$ y un parámetro $`\lambda \in \mathbb{R}\setminus\{0\}`$, de forma tal que:
+
+```math
+L_1: \lambda\vec{v_d} + P
+```
+Donde: $`\vec{v_d} = (a_2 - a_1, b_2 - b_1)`$ y el punto de paso $`P`$ normalmente es igual a alguno de los puntos dados $`P_1 \lor P_2`$
+
 ### 3. Proyección Escalar
 
 ### 4. Proyección Vectorial
