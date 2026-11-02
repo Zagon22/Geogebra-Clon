@@ -99,8 +99,16 @@ iii) Hacer el producto interno de $`\vec{v_1} \cdot \vec{v_n}`$
 \vec{v_1} \cdot \vec{v_n} = a_1 b_1 + a_2 b_2 = c
 ```
 
-La constante $`c \in \mathbb{R}\setminus\{0\}`$ representa la proyección escalar de $`\vec{v_2} sobre \vec{v_1}`$
+La constante $`c \in \mathbb{R}\setminus\{0\}`$, y es la que representa la proyección escalar de $`\vec{v_2} sobre \vec{v_1}`$
 
 ### 4. Proyección Vectorial
+
+Ref. operación n.º3
+
+iv) Escalar $`c`$ veces el vector $`\vec{v_n}`$:
+
+```math
+  \text{proj}_{\vec{v_2}}\vec{v_1} = c \cdot \vec{v_n}
+```
 
 ### 5. Cambio de Base
