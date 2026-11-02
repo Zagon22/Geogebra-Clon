@@ -39,12 +39,17 @@ El producto cruz de las triplas $`\vec{t_1} = (a_1, b_1, c_1)`$, $`\vec{t_2} = (
 (b_1 c_2 - c_1 b_2)\,\hat{i} - (a_1 c_2 - c_1 a_2)\,\hat{j} + (a_1 b_2 - b_1 a_2)\,\hat{k}
 ```
 
-Como $`\hat{i} = (1,0,0)`$, $`\hat{j} = (0,1,0)`$ y $`\hat{k} = (0,0,1)`$, se tiene que:
+Como los vectores de la base canónica son:
+
+```math
+\hat{i} = (1,0,0),\quad \hat{j} = (0,1,0),\quad \hat{k} = (0,0,1)
+```
+
+se tiene que:
 
 ```math
 \vec{t_1} \times \vec{t_2} = (b_1 c_2 - c_1 b_2,\ -(a_1 c_2 - c_1 a_2),\ a_1 b_2 - b_1 a_2)
 ```
-
 iv) Proyección central de la tripla (se divide por la tercera componente, que es $`D \neq 0`$):
 
 ```math
