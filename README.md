@@ -66,14 +66,40 @@ i) Se tiene que la recta $`L_1`$ está definida por los puntos $`P_1, P_2 \in \m
 P_1 = (a_1, b_1) \wedge P_2 = (a_2, b_2)
 ```
 
-ii) La forma paramétrica de $`L_1`$ está dada por el vector director $`\vec{v_d}`$, el punto de paso $`P = (a, b)`$ y un parámetro $`\lambda \in \mathbb{R}\setminus\{0\}`$, de forma tal que:
+ii) Sucede que la forma paramétrica de $`L_1`$ está dada por el vector director (no nulo) $`\vec{v_d}`$, el punto de paso $`P = (a, b)`$ y un parámetro $`\lambda \in \mathbb{R}\setminus\{0\}`$, de forma tal que:
 
 ```math
 L_1: \lambda\vec{v_d} + P
 ```
-Donde: $`\vec{v_d} = (a_2 - a_1, b_2 - b_1)`$ y el punto de paso $`P`$ normalmente es igual a alguno de los puntos dados $`P_1 \lor P_2`$
+Donde: $`\vec{v_d} = (a_2 - a_1, b_2 - b_1)`$ y el punto de paso $`P`$ es un punto que pertenece a la recta $`L`$.
+
+> Observación: ese punto de paso $`P`$ normalmente es alguno de los puntos dados, $`P_1 \lor P_2`$
 
 ### 3. Proyección Escalar
+
+i) Se tiene a los vectores no nulos $`\vec{v_1}, \vec{v_2} \in \mathbb{R}^{2}`$, donde: 
+
+```math
+\vec{v_1} = (a_1, a_2) \wedge \vec{v_2} = (b_1, b_2)
+```
+
+y se desea proyectar al primero sobre el segundo.
+
+ii. 1) Si $`\lVert \vec{v_2} \lVert_2 = 1`$: saltar al punto (iii)
+
+ii. 2) Si $`\lVert \vec{v_2} \lVert_2 \neq 1`$, entonces $`vec{v_2}`$ debe ser normalizado con tal de que su longitud no tenga influencia en la magnitud del vector proyectado:
+
+```math
+\vec{v_n} = \left(\frac{b_1}{\lVert \vec{v_2} \lVert_2},\ \frac{b_2}{\lVert \vec{v_2} \lVert_2} \right)
+```
+
+iii) Hacer el producto interno de $`\vec{v_1} \cdot \vec{v_n}`$
+
+```math
+\vec{v_1} \cdot \vec{v_n} = a_1 b_1 + a_2 b_2 = c
+```
+
+La constante $`c \in \mathbb{R}\setminus\{0\}`$ representa la proyección escalar de $`\vec{v_2} sobre \vec{v_1}`$
 
 ### 4. Proyección Vectorial
 
