@@ -1,7 +1,7 @@
 # Geogebra-Clon
 > Téngase por sentado que el presente software únicamente maneja: rectas, vectores y puntos en R²; por lo que el alcance de las operaciones enumeradas en la siguiente sección se limita a eso, por no decir que este documento no es un reemplazo al libro, no debe esperarse que lo sea y tampoco tiene la intención de serlo.
 >
-> Para más información, se recomienda: "Introduction to Linear Algebra", de Gilbert Strang.
+> Para más información (como referencia gral.), se recomienda: "Introduction to Linear Algebra", de Gilbert Strang (5ta Edición 2016)
 
 ## Intuición
 
