@@ -1,6 +1,8 @@
 import Modelo.*;
 import Vista.*;
 
+import java.text.DecimalFormat;
+
 import javax.swing.*;
 
 public class Controlador {
@@ -92,6 +94,8 @@ public class Controlador {
         String label = sel.substring(2);
         String type = sel.substring(0, 1);
 
+        DecimalFormat df = new DecimalFormat("0.###"); // 3 decimales, como mucho
+
         switch(type) {
             case "R" -> {
                 Recta r = modelo.buscarRecta(label);
@@ -99,10 +103,10 @@ public class Controlador {
 
                 pc.setTipo("Recta");
                 pc.setLabel(label);
-                pc.setCoordX(Double.toString(r.getXi()));
-                pc.setCoordXf(Double.toString(r.getX()));
-                pc.setCoordY(Double.toString(r.getYi()));
-                pc.setCoordYf(Double.toString(r.getY()));
+                pc.setCoordX(df.format(r.getXi()).toString());
+                pc.setCoordXf(df.format(r.getX()).toString());
+                pc.setCoordY(df.format(r.getYi()).toString());
+                pc.setCoordYf(df.format(r.getY()).toString());
             }   
             case "P" -> {
                 Punto p = modelo.buscarPunto(label);
@@ -110,8 +114,8 @@ public class Controlador {
 
                 pc.setTipo("Punto");
                 pc.setLabel(label);
-                pc.setCoordX(Double.toString(p.getX()));
-                pc.setCoordY(Double.toString(p.getY()));
+                pc.setCoordX(df.format(p.getX()).toString());
+                pc.setCoordY(df.format(p.getY()).toString());
             }
             case "V" -> {
                 VectorGeo v = modelo.buscarVector(label);
@@ -119,8 +123,8 @@ public class Controlador {
 
                 pc.setTipo("Vector");
                 pc.setLabel(label);
-                pc.setCoordX(Double.toString(v.getX()));
-                pc.setCoordY(Double.toString(v.getY()));
+                pc.setCoordX(df.format(v.getX()).toString());
+                pc.setCoordY(df.format(v.getY()).toString());
             }
         }
     }
