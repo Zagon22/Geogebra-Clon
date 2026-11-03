@@ -49,8 +49,8 @@ public class PanelControles extends JPanel implements ModeloListener {
         // add(Box.createVerticalStrut(8));
         // add(botonDistancia);
 
-        tipo.addItemListener(e -> actualizarEstadoSegundoPunto());
-        actualizarEstadoSegundoPunto();
+        tipo.addItemListener(e -> actualizarEstadoCamposRecta());
+        actualizarEstadoCamposRecta();
 
         lista.addListSelectionListener(e -> {
             if (e.getValueIsAdjusting() || refrescando) return;
@@ -82,10 +82,11 @@ public class PanelControles extends JPanel implements ModeloListener {
         return p;
     }
 
-    private void actualizarEstadoSegundoPunto() {
+    private void actualizarEstadoCamposRecta() {
         boolean esRecta = "Recta".equals(tipo.getSelectedItem());
         campoXf.setEnabled(esRecta);
         campoYf.setEnabled(esRecta);
+        botonInterseccion.setEnabled(esRecta);
     }
 
     // Escucha al modelo, y cada vez que cambia, refresca la lista de objetos.
