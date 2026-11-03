@@ -32,6 +32,9 @@ public class Recta extends ObjetoLineal<Recta, Double> implements Curva<MatrizN<
     @Override 
     public MatrizN<Double> parametrizar()
     {
+        if(this.direccion().getX() == 0 && this.direccion().getY() == 0) {
+            throw new IllegalArgumentException("La direccion no puede ser igual a cero...");
+        }
         MatrizN<Double> pLinea = new MatrizN<>(2, 2);
         // Direccion
         pLinea.setElemento(0, 0, direccion().getX());
