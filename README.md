@@ -85,9 +85,9 @@ i) Se tiene a los vectores no nulos $`\vec{v_1}, \vec{v_2} \in \mathbb{R}^{2}`$,
 
 y se desea proyectar al primero sobre el segundo.
 
-ii. 1) Si $`\lVert \vec{v_2} \lVert_2 = 1`$: saltar al punto (iii)
+ii. 1) Si $`\ \lVert \vec{v_2} \lVert_2 = 1`$: saltar al punto (iii)
 
-ii. 2) Si $`\lVert \vec{v_2} \lVert_2 \neq 1`$, entonces $`vec{v_2}`$ debe ser normalizado con tal de que su longitud no tenga influencia en la magnitud del vector proyectado:
+ii. 2) Si $`\ \lVert \vec{v_2} \lVert_2 \neq 1`$, entonces $`\vec{v_2}`$ debe ser normalizado con tal de que su longitud no tenga influencia en la magnitud del vector proyectado:
 
 ```math
 \vec{v_n} = \left(\frac{b_1}{\lVert \vec{v_2} \lVert_2},\ \frac{b_2}{\lVert \vec{v_2} \lVert_2} \right)
@@ -112,3 +112,31 @@ iv) Escalar $`c`$ veces el vector $`\vec{v_n}`$:
 ```
 
 ### 5. Cambio de Base
+
+i) Se tienen tres vectores: 
+
+```math
+\vec{v_1} = (a_1, b_!), \ \vec{b_1} = (x_1, y_1) \ \wedge \ \vec{b_2} = (x_2, y_2)
+```
+de los cuales: $`\vec{b_1} \wedge \vec{b_2}`$ son una base de $`\mathbb{R}^2`$ (es decir, ambos vectores "generan el plano"); mientras que $`\vec{v_1}`$ es un vector escrito en términos de la base elemental.
+
+ii) Armar la matriz de cambio de base.
+
+```math
+$$P_{B \to C} = 
+\begin{pmatrix} 
+\vec{b_1} & \vec{b_2}
+\end{pmatrix}$$
+```
+
+Donde: $`C`$ es la base estándar y $`B`$ la nueva base.
+
+> Observación: i) nótese que los vectores de la "nueva base" son las coordenadas de cada uno de esos vectores en la base estándar o canónica, de modo que ésta matriz transforma vectores de la base dada a la estándar; y, ii) por lo tanto, para poder mapear vectores escritos en la base estándar a la nueva, es necesario invertir la matriz.
+
+iii) Aplicar cambio de base.
+
+```math
+[\vec{v_1}]_B = (P_{B \to C})^{-1}[\vec{v_1}]_C
+```
+
+> Observación: a partir de las obs. anteriores, se desprende que: $`(P_{B \to C})^{-1} = P_{C \to B}`$
