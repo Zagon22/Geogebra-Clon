@@ -171,7 +171,7 @@ public class Controlador {
             JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION;
     }
 
-    // Devuelve las etiquetas de las rectas seleccionadas, sin su prefijo.
+    // Devuelve las etiquetas del par de objetos seleccionadas + el prefijo
     private String[] seleccionDeDos() {
         int[] idx = vista.getPanelControles().getLista().getSelectedIndices();
         if (idx.length != 2) { error("Selecciona exactamente dos objetos"); return null; }
