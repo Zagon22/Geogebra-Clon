@@ -22,6 +22,7 @@ public class PanelControles extends JPanel implements ModeloListener {
     private final JButton botonInterseccion = new JButton("Intersección");
     private final JButton botonEliminar = new JButton("Eliminar");
     private final JButton botonDistancia = new JButton("Distancia");
+    private final JButton botonCaptura = new JButton("Capturar");
 
     private boolean refrescando = false;
     private Runnable alSeleccionar;
@@ -46,6 +47,8 @@ public class PanelControles extends JPanel implements ModeloListener {
         add(botonEliminar);
         add(Box.createVerticalStrut(8));
         add(botonInterseccion);
+        add(Box.createVerticalStrut(8));
+        add(botonCaptura);
         // add(Box.createVerticalStrut(8));
         // add(botonDistancia);
 
@@ -111,6 +114,7 @@ public class PanelControles extends JPanel implements ModeloListener {
     public JButton getBotonInterseccion() { return botonInterseccion; }
     public JButton getBotonDistancia()    { return botonDistancia; }
     public JButton getBotonEliminar()     { return botonEliminar; }
+    public JButton getBotonCaptura()      { return botonCaptura; }
     public JList<String> getLista()       { return lista; }
 
     public String getLabel() {

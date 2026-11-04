@@ -1,8 +1,17 @@
 import Modelo.*;
 import Vista.*;
+import Persistencia.*;
 
+//Para manejar cifras significativas
 import java.text.DecimalFormat;
-import javax.swing.*;
+//Seleccion de archivos, rutas
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+//Para capturar
+import java.io.File;
+import java.io.IOException;
+import java.awt.image.BufferedImage;
 
 public class Controlador {
 
@@ -20,6 +29,7 @@ public class Controlador {
         pc.getBotonAgregar().addActionListener(e -> onAgregar());
         pc.getBotonInterseccion().addActionListener(e -> onInterseccion());
         pc.getBotonEliminar().addActionListener(e -> onEliminar());
+        pc.getBotonCaptura().addActionListener(e -> onCaptura());
         /*Listeners para las otras acciones
         pc.getBotonDistancia().addActionListener(e -> onDistancia()); // por ej.
 
@@ -129,6 +139,36 @@ public class Controlador {
                 pc.setCoordY(df.format(v.getY()).toString());
             }
         }
+    }
+
+    private void onCaptura() {
+        JFileChooser seleccionar = new JFileChooser();
+        seleccionar.setDialogTitle("Guardar captura");
+        seleccionar.setSelectedFile(new File("captura.png"));
+        seleccionar.setFileFilter(new FileNameExtensionFilter("Imagen PNG (*.png)", "png"));
+
+        if (seleccionar.showSaveDialog(vista) != JFileChooser.APPROVE_OPTION) return;
+
+        File archivo = seleccionar.getSelectedFile();
+        if (archivo == null) return;
+
+        File destino = ExportadorImagen.rutaConExtension(archivo, "png");
+        if (archivo.exists() && !confirmarReemplazo(archivo.getName())) return;
+
+        try {
+            BufferedImage img = vista.getLienzo().capturar();
+            ExportadorImagen.exportarPNG(img, destino);
+        } catch (IllegalStateException e) {
+            error(e.getMessage());
+        } catch (IOException e) {
+            error("No se pudo guardar" + e.getMessage());
+        } 
+    } 
+
+    private boolean confirmarReemplazo(String nombre) {
+        return JOptionPane.showConfirmDialog(vista,
+            "Reemplazar " + nombre + "?", "Confirmar",
+            JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION;
     }
 
     // Devuelve las etiquetas de las rectas seleccionadas, sin su prefijo.

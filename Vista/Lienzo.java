@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.*;
+import java.awt.image.BufferedImage;
 import java.util.Map;
 
 public class Lienzo extends JPanel implements ModeloListener {
@@ -122,5 +123,23 @@ public class Lienzo extends JPanel implements ModeloListener {
     private void dibujarEtiqueta(Graphics2D g, String texto, Point2D p) {
         g.setColor(Color.DARK_GRAY);
         g.drawString(texto, (float) p.getX() + 6, (float) p.getY() - 6);
+    }
+
+    public BufferedImage capturar() {
+        int w = getWidth(); int h = getHeight();
+        if(w <= 0 || h <= 0) {
+            throw new IllegalStateException("El lienzo no tiene tamano");
+        }
+
+        BufferedImage img = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
+        Graphics2D g = img.createGraphics();
+
+        try {
+            g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            printAll(g);
+        } finally {
+            g.dispose();
+        }
+        return img;
     }
 }
