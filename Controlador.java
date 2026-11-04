@@ -2,7 +2,6 @@ import Modelo.*;
 import Vista.*;
 
 import java.text.DecimalFormat;
-
 import javax.swing.*;
 
 public class Controlador {
@@ -49,9 +48,12 @@ public class Controlador {
         String[] sel = seleccionDeDos();
         if (sel == null) return;
 
+        String label1 = sel[0].substring(2);
+        String label2 = sel[1].substring(2);
+
         try {
-            Recta r1 = modelo.buscarRecta(sel[0]);
-            Recta r2 = modelo.buscarRecta(sel[1]);
+            Recta r1 = modelo.buscarRecta(label1);
+            Recta r2 = modelo.buscarRecta(label2);
             if (r1 == null || r2 == null) { error("Selecciona dos rectas"); return; }
             Punto p = r1.interseccion(r2);
             modelo.agregarPunto(modelo.crearLabel("interseccion"), p);
@@ -135,7 +137,7 @@ public class Controlador {
         if (idx.length != 2) { error("Selecciona exactamente dos objetos"); return null; }
         String a = vista.getPanelControles().getLista().getModel().getElementAt(idx[0]);
         String b = vista.getPanelControles().getLista().getModel().getElementAt(idx[1]);
-        return new String[]{ a.substring(2), b.substring(2) };
+        return new String[]{ a, b };
     }
 
     // Devuelve la etiqueta + el prefijo
