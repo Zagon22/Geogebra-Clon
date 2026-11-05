@@ -58,6 +58,9 @@ public class PanelControles extends JPanel implements ModeloListener {
         tipo.addItemListener(e -> actualizarEstadoCamposRecta());
         actualizarEstadoCamposRecta();
 
+        //tipo.addItemListener(e -> actualizarEstadoCamposVector());
+        //actualizarEstadoCamposVector();
+
         lista.addListSelectionListener(e -> {
             if (e.getValueIsAdjusting()) return;
 
@@ -105,6 +108,11 @@ public class PanelControles extends JPanel implements ModeloListener {
         campoXf.setEnabled(esRecta);
         campoYf.setEnabled(esRecta);
         botonInterseccion.setEnabled(esRecta);
+    }
+
+    private void actualizarEstadoCamposVector() {
+        boolean esVector = "Vector".equals(tipo.getSelectedItem());
+        /*Clave para que se habiliten los botones/campos que son exclusivos de operaciones vectoriales */
     }
 
     // Escucha al modelo, y cada vez que cambia, refresca la lista de objetos.
