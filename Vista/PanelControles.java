@@ -5,12 +5,15 @@ import Modelo.ModeloListener;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PanelControles extends JPanel implements ModeloListener {
 
     private final GestorObjetos modelo;
     private final DefaultListModel<String> modeloLista = new DefaultListModel<>();
     private final JList<String> lista = new JList<>(modeloLista);
+    private final List<String> seleccionEnOrden = new ArrayList<>();
 
     private final JTextField campoLabel = new JTextField(6);
     private final JTextField campoX = new JTextField(4);
@@ -56,6 +59,18 @@ public class PanelControles extends JPanel implements ModeloListener {
         actualizarEstadoCamposRecta();
 
         lista.addListSelectionListener(e -> {
+            if (e.getValueIsAdjusting()) return;
+
+            List<String> actuales = lista.getSelectedValuesList();
+            List<String> previos  = new ArrayList<>(seleccionEnOrden);
+            previos.retainAll(actuales); // mantiene solo los elementos que coinciden con los elementos seleccionados
+
+            for (String v : actuales) {
+                if (!previos.contains(v)) previos.add(v);
+            }
+            seleccionEnOrden.clear();
+            seleccionEnOrden.addAll(previos);
+
             if (e.getValueIsAdjusting() || refrescando) return;
             if (lista.getSelectedValue() == null) return;
             if (alSeleccionar != null) alSeleccionar.run();
@@ -116,6 +131,7 @@ public class PanelControles extends JPanel implements ModeloListener {
     public JButton getBotonEliminar()     { return botonEliminar; }
     public JButton getBotonCaptura()      { return botonCaptura; }
     public JList<String> getLista()       { return lista; }
+    public List<String> getSeleccionEnOrden() {return seleccionEnOrden; }
 
     public String getLabel() {
         String s = campoLabel.getText().trim();

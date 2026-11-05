@@ -2,6 +2,7 @@ import Modelo.*;
 import Vista.*;
 import Persistencia.*;
 
+import java.util.List;
 //Para manejar cifras significativas
 import java.text.DecimalFormat;
 //Seleccion de archivos, rutas
@@ -32,7 +33,6 @@ public class Controlador {
         pc.getBotonCaptura().addActionListener(e -> onCaptura());
         /*Listeners para las otras acciones
         pc.getBotonDistancia().addActionListener(e -> onDistancia()); // por ej.
-
         */
        
         pc.setAlSeleccionar(this::recuperarDatos);
@@ -55,11 +55,11 @@ public class Controlador {
     }
 
     private void onInterseccion() {
-        String[] sel = seleccionDeDos();
+        List<String> sel = seleccionDeDos();
         if (sel == null) return;
 
-        String label1 = sel[0].substring(2);
-        String label2 = sel[1].substring(2);
+        String label1 = sel.get(0).substring(2);
+        String label2 = sel.get(1).substring(2);
 
         try {
             Recta r1 = modelo.buscarRecta(label1);
@@ -172,12 +172,10 @@ public class Controlador {
     }
 
     // Devuelve las etiquetas del par de objetos seleccionadas + el prefijo
-    private String[] seleccionDeDos() {
-        int[] idx = vista.getPanelControles().getLista().getSelectedIndices();
-        if (idx.length != 2) { error("Selecciona exactamente dos objetos"); return null; }
-        String a = vista.getPanelControles().getLista().getModel().getElementAt(idx[0]);
-        String b = vista.getPanelControles().getLista().getModel().getElementAt(idx[1]);
-        return new String[]{ a, b };
+    private List<String> seleccionDeDos() {
+        List<String> sel = vista.getPanelControles().getSeleccionEnOrden();
+        if (sel.size() != 2) { error("Selecciona exactamente dos objetos"); return null; }
+        return sel;
     }
 
     // Devuelve la etiqueta + el prefijo
