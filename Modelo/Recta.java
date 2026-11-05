@@ -81,6 +81,18 @@ public class Recta extends ObjetoLineal<Recta, Double> implements Curva<MatrizN<
         return crossP;
     }
 
+    @Override
+    public void reflejarSobreY() {
+        this.setXi(-getXi());
+        this.setX(-getX());
+    }
+
+    @Override 
+    public void reflejarSobreX() {
+        this.setYi(-getYi());
+        this.setY(-getY());
+    }
+
     public double intercepto() {
         if(this.getXi() != this.getX()) {
             return ((this.getX()*this.getYi()) - (this.getXi()*this.getY())) / 

@@ -14,6 +14,10 @@ public abstract class ObjetoLineal<T, U> extends ObjetoGeo<T, U> {
         this.p2 = new Punto(x, y);
     }
 
+    public abstract void reflejarSobreY();
+
+    public abstract void reflejarSobreX();
+
     public Punto getPunto1() { return this.p1; }
 
     public Punto getPunto2() { return this.p2; }

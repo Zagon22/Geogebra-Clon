@@ -16,6 +16,16 @@ public class VectorGeo extends ObjetoLineal<VectorGeo, VectorGeo> {
         return vDist; // Este es el vector que representa la diferencia entre los vectores dados (el que une a los dos)
     }
 
+    @Override
+    public void reflejarSobreY() {
+        this.setX(-getX());
+    }
+
+    @Override 
+    public void reflejarSobreX() {
+        this.setY(-getY());
+    } // ambas reflexiones podrian implementarse matricialmente, pero se le agregaria complejidad innecesaria al caso
+
     public VectorGeo proVectorial(VectorGeo projV) {
         double c = this.proEscalar(projV); // se saca ventaja de que el proceso de calcula la proyeccion vectorial es, hasta ultima instancia, igual al de la escalar
         VectorGeo projF = new VectorGeo(c * projV.getX() / projV.longitud(), c * projV.getY() / projV.longitud());
