@@ -140,3 +140,31 @@ iii) Aplicar cambio de base.
 ```
 
 > Observación: a partir de las obs. anteriores, se desprende que: $`(P_{B \to C})^{-1} = P_{C \to B}`$
+
+### 6. Distancia
+
+some stuff to be written in here :)
+
+### 7. Reflexiones
+
+> Observación: las reflexiones a tratar son sólo respecto de los ejes x e y, siendo una reflexión realizada primero sobre uno de los ejes y eventualmente sobre el otro, lo que se conoce como una reflexión respecto del origen (0, 0) que, al mismo tiempo, representa una rotación de 180º.
+
+i) Se tiene al punto $`P_1 \in \mathbb{R}^2`$.
+
+ii. 1) Su reflexión respecto del eje-x está dada por:
+
+```math
+\begin{pmatrix} x_1 \\ -y_1 \end{pmatrix}
+= \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}
+\begin{pmatrix} x_1 \\ y_1 \end{pmatrix} 
+```
+
+ii. 2) Mientras tanto aquella respecto del eje-y, lo está por:
+
+```math
+\begin{pmatrix} -x_1 \\ y_1 \end{pmatrix}
+= \begin{pmatrix} -1 & 0 \\ 0 & 1 \end{pmatrix}
+\begin{pmatrix} x_1 \\ y_1 \end{pmatrix}
+```
+
+> Observación: Para las rectas el proceso es el mismo, sólo que, al estar defenidas por dos puntos, esto debe extenderse al segundo punto; lo mismo ocurre para aquellos vectores que no estén anclados al origen, si lo están, sin embargo, el proceso es igual al descrito previamente.
