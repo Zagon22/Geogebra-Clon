@@ -143,7 +143,43 @@ iii) Aplicar cambio de base.
 
 ### 6. Distancia
 
-some stuff to be written in here :)
+(Puntos)
+
+i) Se tienen dos puntos $`P_1, P_2 \in \mathbb{R}^2`$.
+
+ii) La menor distancia entre ellos está dada por la longitud del segmento de la recta que las une:
+
+```math
+dist(P_1, P_2) = \lVert P_2 - P_1 \lVert_2 = \sqrt{(x_2 - x_1)^2 + (y_2 - y_2)^2}
+```
+
+(Rectas)
+
+i) Se tiene a las rectas $`L_1, L_2 \subseteq \mathbb{R}^2`$, las cuales tienen una $`dist(L_1, L_2) \neq 0`$ si $`L_1 \cap L_2 = \varnothing`$ (véase sección n.º1 parte ii. 2)
+
+ii) Ocurre que la menor distancia entre las rectas $`L_1, L_2`$ está dada por la longitud del segmento de: $`L'`$, que satisface las siguientes condiciones:
+
+```math
+L' \perp L_1, L' \perp L_2 \ \wedge \ L' \cap L_1 = P_1, L' \cap L_2 = P_2
+```
+
+iii) La distancia, finalmente, está dada por:
+
+```math
+dist(P_1, P_2) = \lVert P_2 - P_1 \lVert_2 = \sqrt{(x_2 - x_1)^2 + (y_2 - y_2)^2}
+```
+
+Donde: $`P_1, P_2`$ son los extremos del segmento que representa la menor distancia entre las rectas.
+
+(Recta y Punto)
+
+i) Se tiene al punto $`P \in \mathbb{R}^2`$ y a la recta $`L_1 \subseteq \mathbb{R}^2`$
+
+ii) Sucede que la mínima distancia entre estos objetos está dada por aquella entre la recta $`L_1`$ y $`L'`$, que es la recta paralela a $`L_1`$ que contiene al punto $`P`$.
+
+iii) Calcular: $`dist(L_1, L')`$ (revisar parte anterior)
+
+> Observación: no se aborda la distancia entre vectores, ya que en el software estos se encuentran fijos en el origen, de modo que su distancia siempre es 0; sin embargo, la operación distancia fue reinterpretada como su diferencia, la cual no es una distancia ya que devuelve otro vector (siempre distinto del nulo, a no ser que los vectores sean iguales) en lugar de un escalar.
 
 ### 7. Reflexiones
 
