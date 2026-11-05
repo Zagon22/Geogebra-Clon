@@ -21,10 +21,12 @@ public class PanelControles extends JPanel implements ModeloListener {
     private final JTextField campoXf = new JTextField(4);
     private final JTextField campoYf = new JTextField(4);
     private final JComboBox<String> tipo = new JComboBox<>(new String[]{"Punto", "Vector", "Recta"});
+    private final JComboBox<String> reflexion = new JComboBox<>(new String[]{"Eje-x", "Eje-y"});
     private final JButton botonAgregar = new JButton("Agregar");
     private final JButton botonInterseccion = new JButton("Intersección");
     private final JButton botonEliminar = new JButton("Eliminar");
     private final JButton botonDistancia = new JButton("Distancia");
+    private final JButton botonReflexion = new JButton("Reflejar");
     private final JButton botonCaptura = new JButton("Capturar");
 
     private boolean refrescando = false;
@@ -51,15 +53,28 @@ public class PanelControles extends JPanel implements ModeloListener {
         add(Box.createVerticalStrut(8));
         add(botonInterseccion);
         add(Box.createVerticalStrut(8));
+        add(fila("Reflexion", reflexion));
+        add(Box.createVerticalStrut(4));
+        add(botonReflexion);
+        add(Box.createVerticalStrut(8));
         add(botonCaptura);
         // add(Box.createVerticalStrut(8));
         // add(botonDistancia);
 
+        botonReflexion.setEnabled(false);
+        reflexion.setEnabled(false);
+
         tipo.addItemListener(e -> actualizarEstadoCamposRecta());
         actualizarEstadoCamposRecta();
 
-        //tipo.addItemListener(e -> actualizarEstadoCamposVector());
-        //actualizarEstadoCamposVector();
+        tipo.addItemListener(e -> actualizarEstadoCamposVector());
+        actualizarEstadoCamposVector();
+        
+        tipo.addItemListener(e -> {
+            boolean permiteReflexion = "Vector".equals(tipo.getSelectedItem()) || "Recta".equals(tipo.getSelectedItem());
+            reflexion.setEnabled(permiteReflexion);
+            botonReflexion.setEnabled(permiteReflexion);
+        });
 
         lista.addListSelectionListener(e -> {
             if (e.getValueIsAdjusting()) return;
@@ -112,7 +127,8 @@ public class PanelControles extends JPanel implements ModeloListener {
 
     private void actualizarEstadoCamposVector() {
         boolean esVector = "Vector".equals(tipo.getSelectedItem());
-        /*Clave para que se habiliten los botones/campos que son exclusivos de operaciones vectoriales */
+        /*Clave para que se habiliten los botones/campos que son exclusivos de operaciones vectoriales
+        por ej. aca tendrian que ir los que sean pertinentes para proyecciones! */
     }
 
     // Escucha al modelo, y cada vez que cambia, refresca la lista de objetos.
@@ -138,6 +154,7 @@ public class PanelControles extends JPanel implements ModeloListener {
     public JButton getBotonDistancia()    { return botonDistancia; }
     public JButton getBotonEliminar()     { return botonEliminar; }
     public JButton getBotonCaptura()      { return botonCaptura; }
+    public JButton getBotonReflexion()    { return botonReflexion; }
     public JList<String> getLista()       { return lista; }
     public List<String> getSeleccionEnOrden() {return seleccionEnOrden; }
 
@@ -151,6 +168,7 @@ public class PanelControles extends JPanel implements ModeloListener {
     public double getCoordXf()  { return Double.parseDouble(campoXf.getText().trim()); }
     public double getCoordYf()  { return Double.parseDouble(campoYf.getText().trim()); }
     public String getTipo() { return (String) tipo.getSelectedItem(); }
+    public String getReflexion() { return (String) reflexion.getSelectedItem(); }
 
     public void setCoordX(String valor) { campoX.setText(valor); }
     public void setCoordY(String valor) { campoY.setText(valor); }

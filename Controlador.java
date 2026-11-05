@@ -31,6 +31,7 @@ public class Controlador {
         pc.getBotonInterseccion().addActionListener(e -> onInterseccion());
         pc.getBotonEliminar().addActionListener(e -> onEliminar());
         pc.getBotonCaptura().addActionListener(e -> onCaptura());
+        pc.getBotonReflexion().addActionListener(e -> onReflexion());
         /*Listeners para las otras acciones
         pc.getBotonDistancia().addActionListener(e -> onDistancia()); // por ej.
         */
@@ -86,6 +87,31 @@ public class Controlador {
         }
     }
     
+    private void onReflexion() {
+        String sel = seleccion();
+        if(sel == null) return;
+
+        PanelControles pc = vista.getPanelControles();
+
+        String label = sel.substring(2);
+        String type = sel.substring(0, 1);
+
+        String refleccion = pc.getReflexion();
+        
+        switch(type) {
+            case "R" -> {
+                Recta r = modelo.buscarRecta(label);
+                if(refleccion == "Eje-x") r.reflejarSobreX(); modelo.agregarRecta(label, r);
+                if(refleccion == "Eje-y") r.reflejarSobreY(); modelo.agregarRecta(label, r); 
+            }
+            case "V" -> {
+                VectorGeo v = modelo.buscarVector(label);
+                if(refleccion == "Eje-x") v.reflejarSobreX(); modelo.agregarVector(label, v);
+                if(refleccion == "Eje-y") v.reflejarSobreY(); modelo.agregarVector(label, v);
+            }
+        }
+    }
+
     private void onDistancia() {
         // para hacer, ok?
     }
