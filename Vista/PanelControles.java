@@ -20,6 +20,7 @@ public class PanelControles extends JPanel implements ModeloListener {
     private final JTextField campoY = new JTextField(4);
     private final JTextField campoXf = new JTextField(4);
     private final JTextField campoYf = new JTextField(4);
+    private final JTextField norma = new JTextField(4);
     private final JComboBox<String> tipo = new JComboBox<>(new String[]{"Punto", "Vector", "Recta"});
     private final JComboBox<String> reflexion = new JComboBox<>(new String[]{"Eje-x", "Eje-y"});
     private final JButton botonAgregar = new JButton("Agregar");
@@ -45,6 +46,8 @@ public class PanelControles extends JPanel implements ModeloListener {
         add(fila("Xf", campoXf));
         add(fila("Yf", campoYf));
         add(Box.createVerticalStrut(4));
+        add(fila("Norma", norma));
+        add(Box.createVerticalStrut(4));
         add(fila("Tipo", tipo));
         add(Box.createVerticalStrut(8));
         add(botonAgregar);
@@ -61,6 +64,7 @@ public class PanelControles extends JPanel implements ModeloListener {
         // add(Box.createVerticalStrut(8));
         // add(botonDistancia);
 
+        norma.setEditable(false);
         botonReflexion.setEnabled(false);
         reflexion.setEnabled(false);
 
@@ -127,6 +131,7 @@ public class PanelControles extends JPanel implements ModeloListener {
 
     private void actualizarEstadoCamposVector() {
         boolean esVector = "Vector".equals(tipo.getSelectedItem());
+        norma.setEnabled(esVector);
         /*Clave para que se habiliten los botones/campos que son exclusivos de operaciones vectoriales
         por ej. aca tendrian que ir los que sean pertinentes para proyecciones! */
     }
@@ -167,6 +172,7 @@ public class PanelControles extends JPanel implements ModeloListener {
     public double getCoordY()   { return Double.parseDouble(campoY.getText().trim()); }
     public double getCoordXf()  { return Double.parseDouble(campoXf.getText().trim()); }
     public double getCoordYf()  { return Double.parseDouble(campoYf.getText().trim()); }
+    public double getNorma()    { return Double.parseDouble(norma.getText().trim()); }
     public String getTipo() { return (String) tipo.getSelectedItem(); }
     public String getReflexion() { return (String) reflexion.getSelectedItem(); }
 
@@ -174,6 +180,7 @@ public class PanelControles extends JPanel implements ModeloListener {
     public void setCoordY(String valor) { campoY.setText(valor); }
     public void setCoordXf(String valor) { campoXf.setText(valor); }
     public void setCoordYf(String valor) { campoYf.setText(valor); }
+    public void setNorma(String valor) { norma.setText(valor); }
     public void setLabel(String etiqueta) { campoLabel.setText(etiqueta); }
     public void setTipo(String obj) { tipo.setSelectedItem(obj); }
     public void setAlSeleccionar(Runnable r) { this.alSeleccionar = r; }

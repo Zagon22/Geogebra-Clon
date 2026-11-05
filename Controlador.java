@@ -163,6 +163,7 @@ public class Controlador {
                 pc.setLabel(label);
                 pc.setCoordX(df.format(v.getX()).toString());
                 pc.setCoordY(df.format(v.getY()).toString());
+                pc.setNorma(df.format(v.longitud()).toString());
             }
         }
     }
