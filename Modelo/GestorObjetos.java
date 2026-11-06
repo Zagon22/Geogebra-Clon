@@ -16,6 +16,7 @@ public class GestorObjetos {
     private AtomicLong contadorPorDefecto;
     private AtomicLong contadorPuntosInt;
     private AtomicLong contadorVectoresProj;
+    private AtomicLong contadorVectoresProjE;
     private AtomicLong contadorVectoresCb;
     private AtomicLong contadorVectorDif;
     private AtomicLong contadorDistancia;
@@ -31,6 +32,7 @@ public class GestorObjetos {
         this.contadorPorDefecto = new AtomicLong(0);
         this.contadorPuntosInt = new AtomicLong(0);
         this.contadorVectoresProj = new AtomicLong(0);
+        this.contadorVectoresProjE = new AtomicLong(0);
         this.contadorVectoresCb = new AtomicLong(0);
         this.contadorVectorDif = new AtomicLong(0);
         this.contadorDistancia = new AtomicLong(0);
@@ -95,6 +97,8 @@ public class GestorObjetos {
                 return "difV_" + contadorVectorDif.incrementAndGet();
             case "dist":
                 return "dist_" + contadorDistancia.incrementAndGet(); 
+            case "projE":
+                return "projE_" + contadorVectoresProjE.incrementAndGet();
             default:
                 return "de_" + contadorPorDefecto.incrementAndGet();
         }
