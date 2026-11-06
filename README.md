@@ -1,7 +1,11 @@
 # Geogebra-Clon
 > Téngase por sentado que el presente software únicamente maneja: rectas, vectores y puntos en $`\mathbb{R}^2`$; por lo que el alcance de las operaciones enumeradas en la siguiente sección se limita a eso, por no decir que este documento no es un reemplazo al libro, no debe esperarse que lo sea y tampoco tiene la intención de serlo.
 >
-> Para más información (como referencia gral.), se recomienda: "Introduction to Linear Algebra", de Gilbert Strang (5ta Edición 2016)
+> Para más información se recomienda:
+> 
+> i) Para proyecciones vectoriales, escalares, cambios de base y distancias: "Introduction to Linear Algebra", de Gilbert Strang (5ta Edición 2016).
+> 
+> ii) Para coordenadas homogéneas y proyección central (temas mencionados en la primera parte): "Multiple View Geometry in computer vision", de Richard Hartley y Andrew Zisserman.
 
 ## Intuición
 
