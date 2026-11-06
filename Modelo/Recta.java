@@ -1,8 +1,9 @@
 package Modelo;
 
+import Modelo.Excepcion.ExcepcionDistanciaCero;
 import PaqueteMatriz.MatrizN;
 
-public class Recta extends ObjetoLineal<Recta, Double> implements Curva<MatrizN<Double>, Punto, Recta>{
+public class Recta extends ObjetoLineal<Recta, Segmento> implements Curva<MatrizN<Double>, Punto, Recta>{
 
     public Recta(double x1, double x2, double y1, double y2) {
         if(x1 == x2 && y1 == y2) {
@@ -13,20 +14,25 @@ public class Recta extends ObjetoLineal<Recta, Double> implements Curva<MatrizN<
     }
 
     @Override
-    public Double distanciaA(Recta a) {
-        Double dist = 0.0;
+    public Segmento distanciaA(Recta a) {
+        Segmento s = null;
         Double tercerCoord = this.productoCruzHomogeneo(a).getElemento(0, 2);
 
-        if(tercerCoord != 0) { return dist; } // si existe interseccion, y esta es un punto, la distancia es igual a 0.
+        if(tercerCoord != 0) { 
+            throw new ExcepcionDistanciaCero("Las rectas tienen interseccion: su distancia es 0"); 
+        } // si existe interseccion, y esta es un punto, la distancia es igual a 0.
+        if(a.intercepto() == this.intercepto() && a.pendiente() == this.pendiente()) {
+            throw new ExcepcionDistanciaCero("Las rectas son coincidentes: su distancia es 0");
+        }
 
         Recta rPer = new Recta(-this.getY(), -this.getYi(), this.getX(), this.getXi());
 
         Punto p1 = this.interseccion(rPer);
         Punto p2 = a.interseccion(rPer);
 
-        dist = p1.distanciaA(p2);
+        s = p1.distanciaA(p2);
 
-        return dist;
+        return s;
     }
 
     @Override 

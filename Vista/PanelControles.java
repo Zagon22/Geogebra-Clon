@@ -56,14 +56,14 @@ public class PanelControles extends JPanel implements ModeloListener {
         add(Box.createVerticalStrut(8));
         add(botonInterseccion);
         add(Box.createVerticalStrut(8));
+        add(botonDistancia);
+        add(Box.createVerticalStrut(8));
         add(fila("Reflexion", reflexion));
         add(Box.createVerticalStrut(4));
         add(botonReflexion);
         add(Box.createVerticalStrut(8));
         add(botonCaptura);
-        // add(Box.createVerticalStrut(8));
-        // add(botonDistancia);
-
+        
         norma.setEditable(false);
         botonReflexion.setEnabled(false);
         reflexion.setEnabled(false);
@@ -149,6 +149,7 @@ public class PanelControles extends JPanel implements ModeloListener {
             modelo.getPuntos().forEach((k, v)   -> modeloLista.addElement("P:" + k));
             modelo.getVectores().forEach((k, v) -> modeloLista.addElement("V:" + k));
             modelo.getRectas().forEach((k, v)   -> modeloLista.addElement("R:" + k));
+            modelo.getSegmentos().forEach((k, v)   -> modeloLista.addElement("S:" + k));
         } finally {
             refrescando = false;
         }

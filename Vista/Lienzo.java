@@ -59,6 +59,8 @@ public class Lienzo extends JPanel implements ModeloListener {
         for (Map.Entry<String, Recta> e : modelo.getRectas().entrySet()) dibujarRecta(g, e.getValue(), e.getKey());
         for (Map.Entry<String, VectorGeo> e : modelo.getVectores().entrySet()) dibujarVector(g, e.getValue(), e.getKey());
         for (Map.Entry<String, Punto> e : modelo.getPuntos().entrySet()) dibujarPunto(g, e.getValue(), e.getKey());
+        for (Map.Entry<String, Segmento> e : modelo.getSegmentos().entrySet()) dibujarSegmento(g, e.getValue(), e.getKey());
+
     }
 
     private void dibujarEjes(Graphics2D g) {
@@ -118,6 +120,14 @@ public class Lienzo extends JPanel implements ModeloListener {
         double bx = b.getX() - s * Math.cos(ang + 0.4), by = b.getY() - s * Math.sin(ang + 0.4);
         g.fill(new Polygon(new int[]{(int) b.getX(), (int) ax, (int) bx},
                            new int[]{(int) b.getY(), (int) ay, (int) by}, 3));
+    }
+
+    private void dibujarSegmento(Graphics2D g, Segmento s, String label) {
+        Point2D a = tr.aPantalla(s.getXi(), s.getYi());   // cola (0,0) para vectores de 2 args
+        Point2D b = tr.aPantalla(s.getX(),  s.getY());
+        g.setColor(new Color(0, 128, 0));
+        g.draw(new Line2D.Double(a, b));
+        dibujarEtiqueta(g, label, b);
     }
 
     private void dibujarEtiqueta(Graphics2D g, String texto, Point2D p) {

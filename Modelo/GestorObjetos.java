@@ -11,12 +11,14 @@ public class GestorObjetos {
     private Map<String, VectorGeo> vectores;
     private Map<String, Punto> puntos;
     private Map<String, Recta> rectas;
+    private Map<String, Segmento> segmentos;
     // Contadores
     private AtomicLong contadorPorDefecto;
     private AtomicLong contadorPuntosInt;
     private AtomicLong contadorVectoresProj;
     private AtomicLong contadorVectoresCb;
     private AtomicLong contadorVectorDif;
+    private AtomicLong contadorDistancia;
 
     private final List<ModeloListener> listeners = new CopyOnWriteArrayList<>();
 
@@ -24,12 +26,14 @@ public class GestorObjetos {
         this.vectores = new HashMap<>();
         this.rectas = new HashMap<>();
         this.puntos = new HashMap<>();
+        this.segmentos = new HashMap<>();
 
         this.contadorPorDefecto = new AtomicLong(0);
         this.contadorPuntosInt = new AtomicLong(0);
         this.contadorVectoresProj = new AtomicLong(0);
         this.contadorVectoresCb = new AtomicLong(0);
         this.contadorVectorDif = new AtomicLong(0);
+        this.contadorDistancia = new AtomicLong(0);
     }
 
     public void addModeloListener(ModeloListener l) { listeners.add(l); }
@@ -39,6 +43,8 @@ public class GestorObjetos {
     public Map<String, Punto> getPuntos() { return Collections.unmodifiableMap(puntos); }
     public Map<String, Recta> getRectas() { return Collections.unmodifiableMap(rectas); }
     public Map<String, VectorGeo> getVectores() { return Collections.unmodifiableMap(vectores); }
+    public Map<String, Segmento> getSegmentos() { return Collections.unmodifiableMap(segmentos); }
+
 
     public void agregarVector(String label, double x, double y) {
         vectores.put(label.toLowerCase(), new VectorGeo(x, y));
@@ -70,6 +76,11 @@ public class GestorObjetos {
         notificar();
     }
 
+    public void agregarSegmento(String label, Segmento s) {
+        segmentos.put(label.toLowerCase(), s);
+        notificar();
+    }
+
     // Nota: para los vectores y puntos que se generen desde el modelo, la idea es que se les genere una etiqueta
 
     public String crearLabel(String operacion) {
@@ -82,6 +93,8 @@ public class GestorObjetos {
                 return "nV_" + contadorVectoresCb.incrementAndGet();
             case "difV":
                 return "difV_" + contadorVectorDif.incrementAndGet();
+            case "dist":
+                return "dist_" + contadorDistancia.incrementAndGet(); 
             default:
                 return "de_" + contadorPorDefecto.incrementAndGet();
         }
@@ -111,6 +124,14 @@ public class GestorObjetos {
         return null;
     }
 
+    public Segmento buscarSegmento(String label) {
+        if(segmentos.containsKey(label.toLowerCase())) {
+            Segmento s = segmentos.get(label.toLowerCase());
+            return s;
+        }
+        return null;
+    }
+
     public void removerVector(String label) {
         if(vectores.containsKey(label.toLowerCase())) {
             vectores.remove(label.toLowerCase());
@@ -132,10 +153,19 @@ public class GestorObjetos {
         }
     }
 
+    public void removerSegmento(String label) {
+        if(segmentos.containsKey(label.toLowerCase())) {
+            segmentos.remove(label.toLowerCase());
+            notificar();
+        }
+    }
+
     public void limpiar() {
         rectas.clear();
         puntos.clear();
         vectores.clear();
+        segmentos.clear();
+        
         notificar();
     } // no implementado, por lo pronto.
 }

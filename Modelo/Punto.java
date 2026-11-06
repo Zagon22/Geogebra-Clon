@@ -1,6 +1,8 @@
 package Modelo;
 
-public class Punto extends ObjetoGeo<Punto, Double>{
+import Modelo.Excepcion.ExcepcionDistanciaCero;
+
+public class Punto extends ObjetoGeo<Punto, Segmento>{
     private double x;
     private double y;
 
@@ -10,11 +12,14 @@ public class Punto extends ObjetoGeo<Punto, Double>{
     }
 
     @Override
-    public Double distanciaA(Punto a) {
-        double dist = Math.hypot(this.getX() - a.getX(), this.getY() - a.getY());
+    public Segmento distanciaA(Punto a) {
+        if(this.getX() == a.getX() && this.getY() == a.getY()) {
+            throw new ExcepcionDistanciaCero("Los puntos son coincidentes: la distancia es 0");
+        }
+        Segmento s = new Segmento(this.x, a.x, this.y, a.y);
         //Math.sqrt(Math.pow(this.getX() - a.getX(), 2) + Math.pow(this.getY() - a.getY(), 2));
 
-        return dist;
+        return s;
     } // Solo distancias a otros puntos
 
     public double getX() { return this.x; }

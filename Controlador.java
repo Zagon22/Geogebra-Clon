@@ -1,4 +1,5 @@
 import Modelo.*;
+import Modelo.Excepcion.ExcepcionDistanciaCero;
 import Vista.*;
 import Persistencia.*;
 
@@ -32,9 +33,7 @@ public class Controlador {
         pc.getBotonEliminar().addActionListener(e -> onEliminar());
         pc.getBotonCaptura().addActionListener(e -> onCaptura());
         pc.getBotonReflexion().addActionListener(e -> onReflexion());
-        /*Listeners para las otras acciones
-        pc.getBotonDistancia().addActionListener(e -> onDistancia()); // por ej.
-        */
+        pc.getBotonDistancia().addActionListener(e -> onDistancia());
        
         pc.setAlSeleccionar(this::recuperarDatos);
     }
@@ -84,6 +83,7 @@ public class Controlador {
             case "R" -> modelo.removerRecta(label);
             case "P" -> modelo.removerPunto(label);
             case "V" -> modelo.removerVector(label);
+            case "S" -> modelo.removerSegmento(label);
         }
     }
     
@@ -112,8 +112,35 @@ public class Controlador {
         }
     }
 
-    private void onDistancia() {
-        // para hacer, ok?
+    private void onDistancia() { 
+        List<String> sel = seleccionDeDos();
+        if(sel == null) return;
+
+        String label = sel.get(0).substring(2);
+        String type = sel.get(0).substring(0, 1);
+        String label1 = sel.get(1).substring(2);
+        String type1 = sel.get(1).substring(0, 1);
+
+        if(!type.equals(type1)) {error("Combinacion invalida"); return;}
+
+        try {
+            switch(type) {
+                case "R" -> {
+                    Recta r = modelo.buscarRecta(label);
+                    Recta r1 = modelo.buscarRecta(label1);
+                    modelo.agregarSegmento(modelo.crearLabel("dist"), r.distanciaA(r1));
+                }
+                case "P" -> {
+                    Punto p = modelo.buscarPunto(label);
+                    Punto p1 = modelo.buscarPunto(label1);
+                    modelo.agregarSegmento(modelo.crearLabel("dist"), p.distanciaA(p1));
+                }
+            }
+        } catch (ExcepcionDistanciaCero e) {
+            error(e.getMessage());
+        }
+        
+
     }
 
     private void onCambioBase() {
@@ -164,6 +191,17 @@ public class Controlador {
                 pc.setCoordX(df.format(v.getX()).toString());
                 pc.setCoordY(df.format(v.getY()).toString());
                 pc.setNorma(df.format(v.longitud()).toString());
+            }
+            case "S" -> {
+                Segmento s = modelo.buscarSegmento(label);
+                if (s == null) {error("El segmento ya no existe"); return;}
+
+                pc.setLabel(label);
+                pc.setCoordX(df.format(s.getXi()).toString());
+                pc.setCoordXf(df.format(s.getX()).toString());
+                pc.setCoordY(df.format(s.getYi()).toString());
+                pc.setCoordYf(df.format(s.getY()).toString());
+                pc.setNorma(df.format(s.longitud()).toString());
             }
         }
     }
