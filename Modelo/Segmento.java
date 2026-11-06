@@ -7,6 +7,8 @@ public class Segmento extends ObjetoLineal<Segmento, Segmento> {
     public Segmento(double x1, double x2, double y1, double y2) {
         super(x1, x2, y1, y2);
     }
+    
+    public Segmento(double x, double y) { super(x, y); }
 
     public Segmento distanciaA(Segmento s) { return null; }
 

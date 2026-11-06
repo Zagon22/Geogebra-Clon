@@ -32,13 +32,13 @@ public class VectorGeo extends ObjetoLineal<VectorGeo, VectorGeo> {
     } // ambas reflexiones podrian implementarse matricialmente, pero se le agregaria complejidad innecesaria al caso
 
     public VectorGeo proVectorial(VectorGeo projV) {
-        double c = this.proEscalar(projV); // se saca ventaja de que el proceso de calcula la proyeccion vectorial es, hasta ultima instancia, igual al de la escalar
-        VectorGeo projF = new VectorGeo(c * projV.getX() / projV.longitud(), c * projV.getY() / projV.longitud());
+        Segmento projE = this.proEscalar(projV); // se saca ventaja de que el proceso de calcula la proyeccion vectorial es, hasta ultima instancia, igual al de la escalar
+        VectorGeo projF = new VectorGeo(projE.getX(), projE.getY());
 
         return projF;
     }
 
-    public double proEscalar(VectorGeo projV) {
+    public Segmento proEscalar(VectorGeo projV) {
         if(projV.longitud() == 0) {
             throw new ExcepcionGeometrica("El vector dado tiene que tener norma > 0");
         }
@@ -61,7 +61,9 @@ public class VectorGeo extends ObjetoLineal<VectorGeo, VectorGeo> {
         MatrizN<Double> prodM1M2 = auxM1.multiplicarMatriz(auxM2);
         double c = prodM1M2.getElemento(0, 0);
 
-        return c;
+        Segmento projE = new Segmento(c * projV.getX(), c * projV.getY());
+
+        return projE;
     }
 
     public VectorGeo cambiarBase(VectorGeo b1, VectorGeo b2) {
