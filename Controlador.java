@@ -131,12 +131,14 @@ public class Controlador {
                 case "R" -> {
                     Recta r = modelo.buscarRecta(label);
                     Recta r1 = modelo.buscarRecta(label1);
-                    modelo.agregarSegmento(modelo.crearLabel("dist"), r.distanciaA(r1));
+                    Segmento s = r.distanciaA(r1);
+                    modelo.agregarSegmento(modelo.crearLabel("dist"), s);
                 }
                 case "P" -> {
                     Punto p = modelo.buscarPunto(label);
                     Punto p1 = modelo.buscarPunto(label1);
-                    modelo.agregarSegmento(modelo.crearLabel("dist"), p.distanciaA(p1));
+                    Segmento s = p.distanciaA(p1);
+                    modelo.agregarSegmento(modelo.crearLabel("dist"), s);
                 }
             }
         } catch (ExcepcionDistanciaCero e) {

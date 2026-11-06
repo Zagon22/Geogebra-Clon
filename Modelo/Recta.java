@@ -15,9 +15,7 @@ public class Recta extends ObjetoLineal<Recta, Segmento> implements Curva<Matriz
 
     @Override
     public Segmento distanciaA(Recta a) {
-        Segmento s = null;
         Double tercerCoord = this.productoCruzHomogeneo(a).getElemento(0, 2);
-
         if(tercerCoord != 0) { 
             throw new ExcepcionDistanciaCero("Las rectas tienen interseccion: su distancia es 0"); 
         } // si existe interseccion, y esta es un punto, la distancia es igual a 0.
@@ -30,7 +28,7 @@ public class Recta extends ObjetoLineal<Recta, Segmento> implements Curva<Matriz
         Punto p1 = this.interseccion(rPer);
         Punto p2 = a.interseccion(rPer);
 
-        s = p1.distanciaA(p2);
+        Segmento s = p1.distanciaA(p2);
 
         return s;
     }
