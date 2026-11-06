@@ -96,10 +96,10 @@ ii. 2) Si $`\ \lVert \vec{v_2} \lVert_2 \neq 1`$, entonces $`\vec{v_2}`$ debe se
 iii) Hacer el producto interno de $`\vec{v_1} \cdot \vec{v_n}`$
 
 ```math
-\vec{v_1} \cdot \vec{v_n} = a_1 b_1 + a_2 b_2 = c
+\vec{v_1} \cdot \vec{v_n} = (a_1 n_1 + a_2 n_2) = c
 ```
 
-La constante $`c \in \mathbb{R}\setminus\{0\}`$, y es la que representa la proyección escalar de $`\vec{v_2} sobre \vec{v_1}`$
+La constante $`c \in \mathbb{R}`$, y es la que representa la proyección escalar de $`\vec{v_1} sobre \vec{v_2}`$
 
 ### 4. Proyección Vectorial
 
@@ -116,7 +116,7 @@ iv) Escalar $`c`$ veces el vector $`\vec{v_n}`$:
 i) Se tienen tres vectores: 
 
 ```math
-\vec{v_1} = (a_1, b_!), \ \vec{b_1} = (x_1, y_1) \ \wedge \ \vec{b_2} = (x_2, y_2)
+\vec{v_1} = (a_1, b_1), \ \vec{b_1} = (x_1, y_1) \ \wedge \ \vec{b_2} = (x_2, y_2)
 ```
 de los cuales: $`\vec{b_1} \wedge \vec{b_2}`$ son una base de $`\mathbb{R}^2`$ (es decir, ambos vectores "generan el plano"); mientras que $`\vec{v_1}`$ es un vector escrito en términos de la base elemental.
 
@@ -166,7 +166,7 @@ L' \perp L_1, L' \perp L_2 \ \wedge \ L' \cap L_1 = P_1, L' \cap L_2 = P_2
 iii) La distancia, finalmente, está dada por:
 
 ```math
-dist(P_1, P_2) = \lVert P_2 - P_1 \lVert_2 = \sqrt{(x_2 - x_1)^2 + (y_2 - y_2)^2}
+dist(P_1, P_2) = \lVert P_2 - P_1 \lVert_2 = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}
 ```
 
 Donde: $`P_1, P_2`$ son los extremos del segmento que representa la menor distancia entre las rectas.
