@@ -58,8 +58,9 @@ public class Controlador {
     }
 
     private void onInterseccion() {
-        List<String> sel = seleccionDeDos();
+        List<String> sel = seleccionMultiple();
         if (sel == null) return;
+        if (sel.size() != 2) { error("Selecciona dos objetos"); return;}
 
         String label1 = sel.get(0).substring(2);
         String label2 = sel.get(1).substring(2);
@@ -116,8 +117,9 @@ public class Controlador {
     }
 
     private void onDistancia() { 
-        List<String> sel = seleccionDeDos();
+        List<String> sel = seleccionMultiple();
         if(sel == null) return;
+        if(sel.size() != 2) { error("Selecciona dos objetos"); return;}
 
         String label = sel.get(0).substring(2);
         String type = sel.get(0).substring(0, 1);
@@ -150,8 +152,6 @@ public class Controlador {
         } catch (ExcepcionDistanciaCero e) {
             error(e.getMessage());
         }
-        
-
     }
 
     private void onCambioBase() {
@@ -160,6 +160,36 @@ public class Controlador {
 
     private void onProyeccion() {
         // para hacer, ok?
+    }
+
+    private void onCaptura() {
+        JFileChooser seleccionar = new JFileChooser();
+        seleccionar.setDialogTitle("Guardar captura");
+        seleccionar.setSelectedFile(new File("captura.png"));
+        seleccionar.setFileFilter(new FileNameExtensionFilter("Imagen PNG (*.png)", "png"));
+
+        if (seleccionar.showSaveDialog(vista) != JFileChooser.APPROVE_OPTION) return;
+
+        File archivo = seleccionar.getSelectedFile();
+        if (archivo == null) return;
+
+        File destino = ExportadorImagen.rutaConExtension(archivo, "png");
+        if (archivo.exists() && !confirmarReemplazo(archivo.getName())) return;
+
+        try {
+            BufferedImage img = vista.getLienzo().capturar();
+            ExportadorImagen.exportarPNG(img, destino);
+        } catch (IllegalStateException e) {
+            error(e.getMessage());
+        } catch (IOException e) {
+            error("No se pudo guardar" + e.getMessage());
+        } 
+    } 
+
+    private boolean confirmarReemplazo(String nombre) {
+        return JOptionPane.showConfirmDialog(vista,
+            "Reemplazar " + nombre + "?", "Confirmar",
+            JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION;
     }
 
     private void recuperarDatos() {
@@ -217,42 +247,12 @@ public class Controlador {
         }
     }
 
-    private void onCaptura() {
-        JFileChooser seleccionar = new JFileChooser();
-        seleccionar.setDialogTitle("Guardar captura");
-        seleccionar.setSelectedFile(new File("captura.png"));
-        seleccionar.setFileFilter(new FileNameExtensionFilter("Imagen PNG (*.png)", "png"));
-
-        if (seleccionar.showSaveDialog(vista) != JFileChooser.APPROVE_OPTION) return;
-
-        File archivo = seleccionar.getSelectedFile();
-        if (archivo == null) return;
-
-        File destino = ExportadorImagen.rutaConExtension(archivo, "png");
-        if (archivo.exists() && !confirmarReemplazo(archivo.getName())) return;
-
-        try {
-            BufferedImage img = vista.getLienzo().capturar();
-            ExportadorImagen.exportarPNG(img, destino);
-        } catch (IllegalStateException e) {
-            error(e.getMessage());
-        } catch (IOException e) {
-            error("No se pudo guardar" + e.getMessage());
-        } 
-    } 
-
-    private boolean confirmarReemplazo(String nombre) {
-        return JOptionPane.showConfirmDialog(vista,
-            "Reemplazar " + nombre + "?", "Confirmar",
-            JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION;
-    }
-
     // Devuelve las etiquetas del par de objetos seleccionadas + el prefijo
-    private List<String> seleccionDeDos() {
+    private List<String> seleccionMultiple() {
         List<String> sel = vista.getPanelControles().getSeleccionEnOrden();
-        if (sel.size() != 2) { error("Selecciona exactamente dos objetos"); return null; }
+        if (sel.size() < 2) { error("Selecciona mas de un objeto"); return null; }
         return sel;
-    }
+    } // Seleccion Multiple ordenada (antes solo seleccionaba pares)
 
     // Devuelve la etiqueta + el prefijo
     private String seleccion() {
