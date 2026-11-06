@@ -123,11 +123,23 @@ public class Lienzo extends JPanel implements ModeloListener {
     }
 
     private void dibujarSegmento(Graphics2D g, Segmento s, String label) {
-        Point2D a = tr.aPantalla(s.getXi(), s.getYi());   // cola (0,0) para vectores de 2 args
+        Point2D a = tr.aPantalla(s.getXi(), s.getYi());
         Point2D b = tr.aPantalla(s.getX(),  s.getY());
         g.setColor(new Color(0, 128, 0));
         g.draw(new Line2D.Double(a, b));
-        dibujarEtiqueta(g, label, b);
+
+        double mx = (a.getX() + b.getX()) / 2.0;
+        double my = (a.getY() + b.getY()) / 2.0;
+
+        double dx = b.getX() - a.getX(), dy = b.getY() - a.getY();
+        double len = Math.hypot(dx, dy);
+        if (len > 1e-6) {
+            double d = 10;
+            mx += (-dy / len) * d;
+            my += ( dx / len) * d;
+        } // para centrar la etiqueta
+
+        dibujarEtiqueta(g, label, new Point2D.Double(mx, my));
     }
 
     private void dibujarEtiqueta(Graphics2D g, String texto, Point2D p) {
