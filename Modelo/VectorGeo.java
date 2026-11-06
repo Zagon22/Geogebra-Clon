@@ -14,7 +14,7 @@ public class VectorGeo extends ObjetoLineal<VectorGeo, VectorGeo> {
     @Override
     public VectorGeo distanciaA(VectorGeo a) {
         if(this.getX() == a.getX() && this.getY() == a.getY()) {
-            throw new ExcepcionDistanciaCero("La diferencia entre el mismo vector es el vector nulo");
+            throw new ExcepcionDistanciaCero("La diferencia entre dos vectores iguales es el vector nulo");
         }
         
         VectorGeo vDist = new VectorGeo(this.getX() - a.getX(), this.getY() - a.getY());
