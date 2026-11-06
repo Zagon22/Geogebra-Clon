@@ -45,7 +45,10 @@ public class Controlador {
             switch (pc.getTipo()) {
                 case "Punto"  -> modelo.agregarPunto(label, pc.getCoordX(), pc.getCoordY());
                 case "Vector" -> modelo.agregarVector(label, pc.getCoordX(), pc.getCoordY());
-                case "Recta"  -> modelo.agregarRecta(label, pc.getCoordX(), pc.getCoordXf(), pc.getCoordY(), pc.getCoordYf());   // De momento solo grafica rectas homogeneas.
+                case "Recta"  -> modelo.agregarRecta(label, pc.getCoordX(), 
+                                    pc.getCoordXf(), 
+                                    pc.getCoordY(), 
+                                    pc.getCoordYf());
             }
         } catch (NumberFormatException ex) {
             error("Coordenadas inválidas");
