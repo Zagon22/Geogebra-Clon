@@ -140,6 +140,12 @@ public class Controlador {
                     Segmento s = p.distanciaA(p1);
                     modelo.agregarSegmento(modelo.crearLabel("dist"), s);
                 }
+                case "V" -> {
+                    VectorGeo v = modelo.buscarVector(label);
+                    VectorGeo v1 = modelo.buscarVector(label1);
+                    VectorGeo d = v.distanciaA(v1);
+                    modelo.agregarVector(modelo.crearLabel("difV"), d);
+                }
             }
         } catch (ExcepcionDistanciaCero e) {
             error(e.getMessage());

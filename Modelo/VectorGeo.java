@@ -1,6 +1,7 @@
 package Modelo;
 
 import Modelo.Excepcion.ExcepcionBaseLD;
+import Modelo.Excepcion.ExcepcionDistanciaCero;
 import Modelo.Excepcion.ExcepcionGeometrica;
 import PaqueteMatriz.MatrizN;
 
@@ -12,6 +13,10 @@ public class VectorGeo extends ObjetoLineal<VectorGeo, VectorGeo> {
 
     @Override
     public VectorGeo distanciaA(VectorGeo a) {
+        if(this.getX() == a.getX() && this.getY() == a.getY()) {
+            throw new ExcepcionDistanciaCero("La diferencia entre el mismo vector es el vector nulo");
+        }
+        
         VectorGeo vDist = new VectorGeo(this.getX() - a.getX(), this.getY() - a.getY());
         return vDist; // Este es el vector que representa la diferencia entre los vectores dados (el que une a los dos)
     }
