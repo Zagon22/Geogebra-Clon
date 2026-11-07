@@ -154,7 +154,7 @@ i) Se tienen dos puntos $`P_1, P_2 \in \mathbb{R}^2`$.
 ii) La menor distancia entre ellos está dada por la longitud del segmento de la recta que las une:
 
 ```math
-dist(P_1, P_2) = \lVert P_2 - P_1 \lVert_2 = \sqrt{(x_2 - x_1)^2 + (y_2 - y_2)^2}
+dist(P_1, P_2) = \lVert P_2 - P_1 \lVert_2 = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}
 ```
 
 (Rectas)
