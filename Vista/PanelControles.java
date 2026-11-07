@@ -29,6 +29,8 @@ public class PanelControles extends JPanel implements ModeloListener {
     private final JButton botonDistancia = new JButton("Distancia");
     private final JButton botonReflexion = new JButton("Reflejar");
     private final JButton botonCaptura = new JButton("Capturar");
+    private final JButton botonLimpiar = new JButton("Limpiar");
+
 
     private boolean refrescando = false;
     private Runnable alSeleccionar;
@@ -50,9 +52,7 @@ public class PanelControles extends JPanel implements ModeloListener {
         add(Box.createVerticalStrut(4));
         add(fila("Tipo", tipo));
         add(Box.createVerticalStrut(8));
-        add(botonAgregar);
-        add(Box.createVerticalStrut(8));
-        add(botonEliminar);
+        add(fila(botonAgregar, botonEliminar));
         add(Box.createVerticalStrut(8));
         add(botonInterseccion);
         add(Box.createVerticalStrut(8));
@@ -62,7 +62,7 @@ public class PanelControles extends JPanel implements ModeloListener {
         add(Box.createVerticalStrut(4));
         add(botonReflexion);
         add(Box.createVerticalStrut(8));
-        add(botonCaptura);
+        add(fila(botonCaptura, botonLimpiar));
         
         norma.setEditable(false);
         botonReflexion.setEnabled(false);
@@ -122,6 +122,27 @@ public class PanelControles extends JPanel implements ModeloListener {
         return p;
     }
 
+    private JPanel fila(JComponent c, JComponent c1) {
+        JPanel p = new JPanel(new BorderLayout());
+        p.setLayout(new BoxLayout(p, BoxLayout.X_AXIS));
+
+        c.setPreferredSize(new Dimension(90, 24));
+        c.setMaximumSize(new Dimension(90, 24));
+        p.add(c);
+
+        p.add(Box.createHorizontalStrut(12));
+
+        c1.setPreferredSize(new Dimension(90, 24));
+        c1.setMaximumSize(new Dimension(90, 24));
+        p.add(c1);
+
+        p.add(Box.createHorizontalGlue());
+        p.setMaximumSize(new Dimension(Integer.MAX_VALUE, 28));
+        p.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        return p;
+    }
+
     private void actualizarEstadoCamposRecta() {
         boolean esRecta = "Recta".equals(tipo.getSelectedItem());
         campoXf.setEnabled(esRecta);
@@ -161,6 +182,7 @@ public class PanelControles extends JPanel implements ModeloListener {
     public JButton getBotonEliminar()     { return botonEliminar; }
     public JButton getBotonCaptura()      { return botonCaptura; }
     public JButton getBotonReflexion()    { return botonReflexion; }
+    public JButton getBotonLimpiar()      { return botonLimpiar; }
     public JList<String> getLista()       { return lista; }
     public List<String> getSeleccionEnOrden() {return seleccionEnOrden; }
 
