@@ -1,6 +1,7 @@
 package Modelo;
 
 import Modelo.Excepcion.ExcepcionDistanciaCero;
+import Modelo.Excepcion.InterseccionDistintaAPunto;
 import PaqueteMatriz.MatrizN;
 
 public class Recta extends ObjetoLineal<Recta, Segmento> implements Curva<MatrizN<Double>, Punto, Recta>{
@@ -56,7 +57,7 @@ public class Recta extends ObjetoLineal<Recta, Segmento> implements Curva<Matriz
         MatrizN<Double> crossP = this.productoCruzHomogeneo(r);
 
         if(crossP.getElemento(0, 2) == 0) { 
-            throw new IllegalArgumentException("La interseccion es vacia o la recta dada!"); 
+            throw new InterseccionDistintaAPunto("La interseccion es vacia o la recta dada!"); 
         }
 
         double c1 = crossP.getElemento(0, 0) / crossP.getElemento(0, 2);

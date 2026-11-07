@@ -1,5 +1,6 @@
 import Modelo.*;
 import Modelo.Excepcion.ExcepcionDistanciaCero;
+import Modelo.Excepcion.InterseccionDistintaAPunto;
 import Vista.*;
 import Persistencia.*;
 
@@ -50,10 +51,10 @@ public class Controlador {
                                     pc.getCoordY(), 
                                     pc.getCoordYf());
             }
-        } catch (NumberFormatException ex) {
+        } catch (NumberFormatException e) {
             error("Coordenadas inválidas");
-        } catch (IllegalArgumentException ex) {
-            error(ex.getMessage());
+        } catch (IllegalArgumentException e) {
+            error(e.getMessage());
         }
     }
 
@@ -71,8 +72,8 @@ public class Controlador {
             if (r1 == null || r2 == null) { error("Selecciona dos rectas"); return; }
             Punto p = r1.interseccion(r2);
             modelo.agregarPunto(modelo.crearLabel("interseccion"), p);
-        } catch (IllegalArgumentException ex) {
-            error(ex.getMessage());
+        } catch (InterseccionDistintaAPunto e) {
+            error(e.getMessage());
         }
     }
 
