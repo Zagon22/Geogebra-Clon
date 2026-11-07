@@ -132,8 +132,11 @@ public class PanelControles extends JPanel implements ModeloListener {
         p.setLayout(new BoxLayout(p, BoxLayout.X_AXIS));
 
         for(int i = 0; i < c.length; i++) {
-            c[i].setPreferredSize(new Dimension(120, 24));
-            c[i].setMaximumSize(new Dimension(120, 24));
+            c[i].setPreferredSize(new Dimension(90, 24));
+            c[i].setMaximumSize(new Dimension(90, 24));
+            if (c[i] instanceof AbstractButton) {
+                ((AbstractButton) c[i]).setMargin(new Insets(2, 2, 2, 2));
+            }
             p.add(c[i]);
             if(i != c.length - 1) p.add(Box.createHorizontalStrut(12));
         }
