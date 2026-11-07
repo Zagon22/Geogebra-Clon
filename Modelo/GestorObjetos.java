@@ -169,7 +169,14 @@ public class GestorObjetos {
         puntos.clear();
         vectores.clear();
         segmentos.clear();
-        
+        // resetear contadores
+        contadorDistancia.set(0);
+        contadorPorDefecto.set(0);
+        contadorPuntosInt.set(0);
+        contadorVectorDif.set(0);
+        contadorVectoresCb.set(0);
+        contadorVectoresProj.set(0);
+        contadorVectoresProjE.set(0);
         notificar();
     } // no implementado, por lo pronto.
 }
