@@ -162,6 +162,10 @@ public class Controlador {
         // para hacer, ok?
     }
 
+    private void onLimpiar() {
+        // para hacer, ok?
+    }
+
     private void onCaptura() {
         JFileChooser seleccionar = new JFileChooser();
         seleccionar.setDialogTitle("Guardar captura");
