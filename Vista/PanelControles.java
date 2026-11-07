@@ -4,6 +4,8 @@ import Modelo.GestorObjetos;
 import Modelo.ModeloListener;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +25,7 @@ public class PanelControles extends JPanel implements ModeloListener {
     private final JTextField norma = new JTextField(4);
     private final JComboBox<String> tipo = new JComboBox<>(new String[]{"Punto", "Vector", "Recta"});
     private final JComboBox<String> reflexion = new JComboBox<>(new String[]{"Eje-x", "Eje-y"});
+    private final JComboBox<String> proyeccion = new JComboBox<>(new String[]{"Escalar", "Vectorial"});
     private final JButton botonAgregar = new JButton("Agregar");
     private final JButton botonInterseccion = new JButton("Intersección");
     private final JButton botonEliminar = new JButton("Eliminar");
@@ -30,7 +33,8 @@ public class PanelControles extends JPanel implements ModeloListener {
     private final JButton botonReflexion = new JButton("Reflejar");
     private final JButton botonCaptura = new JButton("Capturar");
     private final JButton botonLimpiar = new JButton("Limpiar");
-
+    private final JButton botonProyectar = new JButton("Proyectar");
+    private final JButton botonCambiarBase = new JButton("Cambiar Base");
 
     private boolean refrescando = false;
     private Runnable alSeleccionar;
@@ -54,13 +58,15 @@ public class PanelControles extends JPanel implements ModeloListener {
         add(Box.createVerticalStrut(8));
         add(fila(botonAgregar, botonEliminar));
         add(Box.createVerticalStrut(8));
-        add(botonInterseccion);
-        add(Box.createVerticalStrut(8));
-        add(botonDistancia);
+        add(fila(botonInterseccion, botonDistancia, botonCambiarBase));
         add(Box.createVerticalStrut(8));
         add(fila("Reflexion", reflexion));
         add(Box.createVerticalStrut(4));
         add(botonReflexion);
+        add(Box.createVerticalStrut(8));
+        add(fila("Proyeccion", proyeccion));
+        add(Box.createVerticalStrut(4));
+        add(botonProyectar);
         add(Box.createVerticalStrut(8));
         add(fila(botonCaptura, botonLimpiar));
         
@@ -106,8 +112,8 @@ public class PanelControles extends JPanel implements ModeloListener {
         p.setLayout(new BoxLayout(p, BoxLayout.X_AXIS));
 
         JLabel lbl = new JLabel(etiqueta);
-        lbl.setPreferredSize(new Dimension(60, 24));
-        lbl.setMaximumSize(new Dimension(60, 24));
+        lbl.setPreferredSize(new Dimension(80, 24));
+        lbl.setMaximumSize(new Dimension(80, 24));
         p.add(lbl);
         p.add(Box.createRigidArea(new Dimension(6, 0)));
 
@@ -122,19 +128,16 @@ public class PanelControles extends JPanel implements ModeloListener {
         return p;
     }
 
-    private JPanel fila(JComponent c, JComponent c1) {
+    private JPanel fila(JComponent... c) {
         JPanel p = new JPanel(new BorderLayout());
         p.setLayout(new BoxLayout(p, BoxLayout.X_AXIS));
 
-        c.setPreferredSize(new Dimension(90, 24));
-        c.setMaximumSize(new Dimension(90, 24));
-        p.add(c);
-
-        p.add(Box.createHorizontalStrut(12));
-
-        c1.setPreferredSize(new Dimension(90, 24));
-        c1.setMaximumSize(new Dimension(90, 24));
-        p.add(c1);
+        for(int i = 0; i < c.length; i++) {
+            c[i].setPreferredSize(new Dimension(120, 24));
+            c[i].setMaximumSize(new Dimension(120, 24));
+            p.add(c[i]);
+            if(i != c.length - 1) p.add(Box.createHorizontalStrut(12));
+        }
 
         p.add(Box.createHorizontalGlue());
         p.setMaximumSize(new Dimension(Integer.MAX_VALUE, 28));
@@ -153,8 +156,9 @@ public class PanelControles extends JPanel implements ModeloListener {
     private void actualizarEstadoCamposVector() {
         boolean esVector = "Vector".equals(tipo.getSelectedItem());
         norma.setEnabled(esVector);
-        /*Clave para que se habiliten los botones/campos que son exclusivos de operaciones vectoriales
-        por ej. aca tendrian que ir los que sean pertinentes para proyecciones! */
+        proyeccion.setEnabled(esVector);
+        botonProyectar.setEnabled(esVector);
+        botonCambiarBase.setEnabled(esVector);
     }
 
     // Escucha al modelo, y cada vez que cambia, refresca la lista de objetos.
