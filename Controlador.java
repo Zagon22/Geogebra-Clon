@@ -113,6 +113,7 @@ public class Controlador {
                 if(refleccion == "Eje-x") v.reflejarSobreX(); modelo.agregarVector(label, v);
                 if(refleccion == "Eje-y") v.reflejarSobreY(); modelo.agregarVector(label, v);
             }
+            default -> error("Al obj. seleccionado no le corresponde esta transformacion");
         }
     }
 
