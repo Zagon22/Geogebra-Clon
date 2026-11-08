@@ -106,18 +106,18 @@ public class Controlador {
         String label = sel.substring(2);
         String type = sel.substring(0, 1);
 
-        String refleccion = pc.getReflexion();
+        String reflexion = pc.getReflexion();
         
         switch(type) {
             case "R" -> {
                 Recta r = modelo.buscarRecta(label);
-                if(refleccion == "Eje-x") r.reflejarSobreX(); modelo.agregarRecta(label, r);
-                if(refleccion == "Eje-y") r.reflejarSobreY(); modelo.agregarRecta(label, r); 
+                if(reflexion.equals("Eje-x")) r.reflejarSobreX(); modelo.agregarRecta(label, r);
+                if(reflexion.equals("Eje-y")) r.reflejarSobreY(); modelo.agregarRecta(label, r); 
             }
             case "V" -> {
                 VectorGeo v = modelo.buscarVector(label);
-                if(refleccion == "Eje-x") v.reflejarSobreX(); modelo.agregarVector(label, v);
-                if(refleccion == "Eje-y") v.reflejarSobreY(); modelo.agregarVector(label, v);
+                if(reflexion.equals("Eje-x")) v.reflejarSobreX(); modelo.agregarVector(label, v);
+                if(reflexion.equals("Eje-y")) v.reflejarSobreY(); modelo.agregarVector(label, v);
             }
             default -> error("Al obj. seleccionado no le corresponde esta transformacion");
         }
