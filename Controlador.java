@@ -166,7 +166,7 @@ public class Controlador {
 
         String label = sel.get(0).substring(2), type = sel.get(0).substring(0, 1);
         String label1 = sel.get(1).substring(2), type1 = sel.get(1).substring(0, 1);
-        String label2 = sel.get(2).substring(2), type2 = sel.get(1).substring(0, 1);
+        String label2 = sel.get(2).substring(2), type2 = sel.get(2).substring(0, 1);
 
         if(!type.equals(type1) || !type1.equals(type2) || !type.equals(type2)) {error("Los objetos deben ser vectores"); return;}
 
