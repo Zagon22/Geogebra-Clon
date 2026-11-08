@@ -1,5 +1,6 @@
 import Modelo.*;
 import Modelo.Excepcion.ExcepcionDistanciaCero;
+import Modelo.Excepcion.ExcepcionGeometrica;
 import Modelo.Excepcion.InterseccionDistintaAPunto;
 import Vista.*;
 import Persistencia.*;
@@ -36,6 +37,7 @@ public class Controlador {
         pc.getBotonReflexion().addActionListener(e -> onReflexion());
         pc.getBotonDistancia().addActionListener(e -> onDistancia());
         pc.getBotonLimpiar().addActionListener(e -> onLimpiar());
+        pc.getBotonProyeccion().addActionListener(e -> onProyeccion());
 
        
         pc.setAlSeleccionar(this::recuperarDatos);
@@ -163,7 +165,40 @@ public class Controlador {
     }
 
     private void onProyeccion() {
-        // para hacer, ok?
+        List<String> sel = seleccionMultiple();
+        if(sel == null) return;
+        if(sel.size() != 2) { error("Selecciona dos objetos"); return;}
+
+        String label = sel.get(0).substring(2);
+        String type = sel.get(0).substring(0, 1);
+        String label1 = sel.get(1).substring(2);
+        String type1 = sel.get(1).substring(0, 1);
+
+        if(!type.equals(type1)) {error("Los objetos deben ser vectores"); return;}
+
+        PanelControles pc = vista.getPanelControles();
+        String typeProj = pc.getProyeccion();
+        try {
+            switch(typeProj) {
+                case "Escalar" -> {
+                    VectorGeo v = modelo.buscarVector(label);
+                    VectorGeo v1 = modelo.buscarVector(label1);
+
+                    Segmento s = v.proEscalar(v1);
+                    modelo.agregarSegmento(modelo.crearLabel("projE"), s);
+                }
+                case "Vectorial" -> {
+                    VectorGeo v = modelo.buscarVector(label);
+                    VectorGeo v1 = modelo.buscarVector(label1);
+
+                    VectorGeo projV = v.proVectorial(v1);
+                    modelo.agregarVector(modelo.crearLabel("projV"), projV);
+                }
+            }
+        } catch (ExcepcionGeometrica e) {
+            error(e.getMessage());
+        }
+
     }
 
     private void onLimpiar() { 
