@@ -44,6 +44,8 @@ public class PanelControles extends JPanel implements ModeloListener {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         add(new JScrollPane(lista));
+        add(fila("Tipo", tipo));
+        add(Box.createVerticalStrut(4));
         add(fila("Label", campoLabel));
         add(fila("X", campoX));
         add(fila("Y", campoY));
@@ -52,8 +54,6 @@ public class PanelControles extends JPanel implements ModeloListener {
         add(fila("Yf", campoYf));
         add(Box.createVerticalStrut(4));
         add(fila("Norma", norma));
-        add(Box.createVerticalStrut(4));
-        add(fila("Tipo", tipo));
         add(Box.createVerticalStrut(8));
         add(fila(botonAgregar, botonEliminar));
         add(Box.createVerticalStrut(8));
