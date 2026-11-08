@@ -1,4 +1,5 @@
 import Modelo.*;
+import Modelo.Excepcion.ExcepcionBaseLD;
 import Modelo.Excepcion.ExcepcionDistanciaCero;
 import Modelo.Excepcion.ExcepcionGeometrica;
 import Modelo.Excepcion.InterseccionDistintaAPunto;
@@ -38,7 +39,7 @@ public class Controlador {
         pc.getBotonDistancia().addActionListener(e -> onDistancia());
         pc.getBotonLimpiar().addActionListener(e -> onLimpiar());
         pc.getBotonProyeccion().addActionListener(e -> onProyeccion());
-
+        pc.getBotonCambiarBase().addActionListener(e -> onCambioBase());
        
         pc.setAlSeleccionar(this::recuperarDatos);
     }
@@ -127,10 +128,8 @@ public class Controlador {
         if(sel == null) return;
         if(sel.size() != 2) { error("Selecciona dos objetos"); return;}
 
-        String label = sel.get(0).substring(2);
-        String type = sel.get(0).substring(0, 1);
-        String label1 = sel.get(1).substring(2);
-        String type1 = sel.get(1).substring(0, 1);
+        String label = sel.get(0).substring(2), type = sel.get(0).substring(0, 1);
+        String label1 = sel.get(1).substring(2), type1 = sel.get(1).substring(0, 1);
 
         if(!type.equals(type1)) {error("Combinacion invalida"); return;}
 
@@ -161,7 +160,25 @@ public class Controlador {
     }
 
     private void onCambioBase() {
-        // para hacer, ok?
+         List<String> sel = seleccionMultiple();
+        if(sel == null) return;
+        if(sel.size() != 3) { error("Selecciona tres objetos"); return;}
+
+        String label = sel.get(0).substring(2), type = sel.get(0).substring(0, 1);
+        String label1 = sel.get(1).substring(2), type1 = sel.get(1).substring(0, 1);
+        String label2 = sel.get(2).substring(2), type2 = sel.get(1).substring(0, 1);
+
+        if(!type.equals(type1) || !type1.equals(type2) || !type.equals(type2)) {error("Los objetos deben ser vectores"); return;}
+
+        try {
+            VectorGeo v = modelo.buscarVector(label);
+            VectorGeo b1 = modelo.buscarVector(label1), b2 = modelo.buscarVector(label2);
+
+            VectorGeo nV = v.cambiarBase(b1, b2);
+            modelo.agregarVector(modelo.crearLabel("cambioB"), nV);
+        } catch (ExcepcionBaseLD e) {
+            error(e.getMessage());
+        }
     }
 
     private void onProyeccion() {
@@ -169,10 +186,8 @@ public class Controlador {
         if(sel == null) return;
         if(sel.size() != 2) { error("Selecciona dos objetos"); return;}
 
-        String label = sel.get(0).substring(2);
-        String type = sel.get(0).substring(0, 1);
-        String label1 = sel.get(1).substring(2);
-        String type1 = sel.get(1).substring(0, 1);
+        String label = sel.get(0).substring(2), type = sel.get(0).substring(0, 1);
+        String label1 = sel.get(1).substring(2), type1 = sel.get(1).substring(0, 1);
 
         if(!type.equals(type1)) {error("Los objetos deben ser vectores"); return;}
 
