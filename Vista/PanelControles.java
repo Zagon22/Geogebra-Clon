@@ -182,14 +182,16 @@ public class PanelControles extends JPanel implements ModeloListener {
         }
     }
 
-    public JButton getBotonAgregar()      { return botonAgregar; }
-    public JButton getBotonInterseccion() { return botonInterseccion; }
-    public JButton getBotonDistancia()    { return botonDistancia; }
-    public JButton getBotonEliminar()     { return botonEliminar; }
-    public JButton getBotonCaptura()      { return botonCaptura; }
-    public JButton getBotonReflexion()    { return botonReflexion; }
-    public JButton getBotonLimpiar()      { return botonLimpiar; }
-    public JList<String> getLista()       { return lista; }
+    public JButton getBotonAgregar()          { return botonAgregar; }
+    public JButton getBotonInterseccion()     { return botonInterseccion; }
+    public JButton getBotonDistancia()        { return botonDistancia; }
+    public JButton getBotonEliminar()         { return botonEliminar; }
+    public JButton getBotonCaptura()          { return botonCaptura; }
+    public JButton getBotonReflexion()        { return botonReflexion; }
+    public JButton getBotonLimpiar()          { return botonLimpiar; }
+    public JButton getBotonProyeccion()       { return botonProyectar; }
+    public JButton getBotonCambiarBase()      { return botonCambiarBase; }
+    public JList<String> getLista()           { return lista; }
     public List<String> getSeleccionEnOrden() {return seleccionEnOrden; }
 
     public String getLabel() {
@@ -197,13 +199,14 @@ public class PanelControles extends JPanel implements ModeloListener {
         if (s.isEmpty()) throw new IllegalArgumentException("Falta la etiqueta");
         return s;
     }
-    public double getCoordX()   { return Double.parseDouble(campoX.getText().trim()); }
-    public double getCoordY()   { return Double.parseDouble(campoY.getText().trim()); }
-    public double getCoordXf()  { return Double.parseDouble(campoXf.getText().trim()); }
-    public double getCoordYf()  { return Double.parseDouble(campoYf.getText().trim()); }
-    public double getNorma()    { return Double.parseDouble(norma.getText().trim()); }
-    public String getTipo() { return (String) tipo.getSelectedItem(); }
-    public String getReflexion() { return (String) reflexion.getSelectedItem(); }
+    public double getCoordX()     { return Double.parseDouble(campoX.getText().trim()); }
+    public double getCoordY()     { return Double.parseDouble(campoY.getText().trim()); }
+    public double getCoordXf()    { return Double.parseDouble(campoXf.getText().trim()); }
+    public double getCoordYf()    { return Double.parseDouble(campoYf.getText().trim()); }
+    public double getNorma()      { return Double.parseDouble(norma.getText().trim()); }
+    public String getTipo()       { return (String) tipo.getSelectedItem(); }
+    public String getReflexion()  { return (String) reflexion.getSelectedItem(); }
+    public String getProyeccion() { return (String) proyeccion.getSelectedItem(); }
 
     public void setCoordX(String valor) { campoX.setText(valor); }
     public void setCoordY(String valor) { campoY.setText(valor); }

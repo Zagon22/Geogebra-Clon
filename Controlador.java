@@ -35,6 +35,8 @@ public class Controlador {
         pc.getBotonCaptura().addActionListener(e -> onCaptura());
         pc.getBotonReflexion().addActionListener(e -> onReflexion());
         pc.getBotonDistancia().addActionListener(e -> onDistancia());
+        pc.getBotonLimpiar().addActionListener(e -> onLimpiar());
+
        
         pc.setAlSeleccionar(this::recuperarDatos);
     }
@@ -164,8 +166,9 @@ public class Controlador {
         // para hacer, ok?
     }
 
-    private void onLimpiar() {
-        // para hacer, ok?
+    private void onLimpiar() { 
+        if(!confirmarLimpieza()) return;
+        modelo.limpiar();
     }
 
     private void onCaptura() {
@@ -195,6 +198,12 @@ public class Controlador {
     private boolean confirmarReemplazo(String nombre) {
         return JOptionPane.showConfirmDialog(vista,
             "Reemplazar " + nombre + "?", "Confirmar",
+            JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION;
+    }
+
+    private boolean confirmarLimpieza() {
+        return JOptionPane.showConfirmDialog(vista,
+            "Desea limpiar el lienzo?", "Confirmar",
             JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION;
     }
 
