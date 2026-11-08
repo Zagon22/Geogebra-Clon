@@ -97,7 +97,7 @@ ii. 2) Si $`\ \lVert \vec{v_2} \lVert_2 \neq 1`$, entonces $`\vec{v_2}`$ debe se
 \vec{v_n} = \left(\frac{b_1}{\lVert \vec{v_2} \lVert_2},\ \frac{b_2}{\lVert \vec{v_2} \lVert_2} \right)
 ```
 
-iii) Hacer el producto interno de $`\vec{v_1} \cdot \vec{v_n}`$
+iii) Calcular el producto interno de $`\vec{v_1} \cdot \vec{v_n}`$
 
 ```math
 \vec{v_1} \cdot \vec{v_n} = (a_1 n_1 + a_2 n_2) = c
