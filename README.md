@@ -70,12 +70,12 @@
 
 Pantalla no. 1:
 
-![Pantalla no. 1](Pantalla-no-1.png)
+![Pantalla no. 1](Documentos/Pantallas/Pantalla-no-1.png)
 
 Pantalla no. 2:
 
-![Pantalla no. 2](Pantalla-no-2.png)
+![Pantalla no. 2](Documentos/Pantallas/Pantalla-no-2.png)
 
 ## Intuición.
 
-[Intuición](geometría.md)
+[Intuición](Documentos/geometría.md)
