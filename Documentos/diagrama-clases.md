@@ -1,3 +1,4 @@
+```mermaid
 classDiagram
     direction TB
 
@@ -143,3 +144,4 @@ classDiagram
     VistaPrincipal *-- Lienzo
     VistaPrincipal *-- PanelControles
     Lienzo *-- Transformacion
+```
