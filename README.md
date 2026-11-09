@@ -53,7 +53,7 @@
 
 ## Detalles.
 
-1. Cantidad de Clases: 15. Desambiguación:
+1. Cantidad de Clases: 15 [Ver](Documentos/diagrama-clases.md). Desambiguación:
 
     - Modelo: ObjetoGeo, ObjetoLineal, Punto, Recta, Segmento, VectorGeo, GestorObjetos, Curva, ModeloListener. (9 clases)
     - Controlador (monolítico - 1 clase)
