@@ -59,8 +59,8 @@
     - Controlador (monolítico - 1 clase)
     - Vista: VistaPrincipal, Lienzo, PanelControles y Transformación. (4 clases)
 
-14 clases MVC + 1 clase «ExportadorImagen» para escribir en el disco.
--> 15 clases totales, de las cuales 2 son abstractas y otro par representan interfaces -> 4 puntos de extensibilidad.
+    ∴ 14 clases MVC + 1 clase «ExportadorImagen» para escribir en el disco.
+    -> 15 clases totales, de las cuales 2 son abstractas y otro par representan interfaces -> 4 puntos de extensibilidad.
 
 2. PLUS: Paquete Matriz y Excepciones propias («ExcepcionGeometrica» ← «ExcepcionBaseLD», «ExcepcionDistanciaCero», «InterseccionDistintaAPunto»).
 
@@ -70,11 +70,11 @@
 
 Pantalla no. 1:
 
-![Pantalla no. 1]
+![Pantalla no. 1](Pantalla-no-1.png)
 
 Pantalla no. 2:
 
-![Pantalla no. 2]
+![Pantalla no. 2](Pantalla-no-2.png)
 
 ## Intuición.
 
