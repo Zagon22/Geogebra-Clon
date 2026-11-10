@@ -88,13 +88,15 @@ public class Controlador {
 
         String label = sel.substring(2);
         String type = sel.substring(0, 1);
-        
+
         switch(type) {
             case "R" -> modelo.removerRecta(label);
             case "P" -> modelo.removerPunto(label);
             case "V" -> modelo.removerVector(label);
             case "S" -> modelo.removerSegmento(label);
         }
+
+        limpiarCampos();
     }
     
     private void onReflexion() {
@@ -160,7 +162,7 @@ public class Controlador {
     }
 
     private void onCambioBase() {
-         List<String> sel = seleccionMultiple();
+        List<String> sel = seleccionMultiple();
         if(sel == null) return;
         if(sel.size() != 3) { error("Selecciona tres objetos"); return;}
 
@@ -219,6 +221,7 @@ public class Controlador {
     private void onLimpiar() { 
         if(!confirmarLimpieza()) return;
         modelo.limpiar();
+        limpiarCampos();
     }
 
     private void onCaptura() {
@@ -325,6 +328,13 @@ public class Controlador {
         if (idx < 0) { error("Selecciona un objeto"); return null; }
         String a = vista.getPanelControles().getLista().getModel().getElementAt(idx);
         return a;
+    }
+
+    private void limpiarCampos() {
+        PanelControles pc = vista.getPanelControles();
+        pc.setLabel(""); pc.setTipo("Punto");
+        pc.setCoordX(""); pc.setCoordY(""); pc.setCoordXf(""); pc.setCoordYf("");
+        pc.setNorma("");
     }
 
     private void error(String msg) {
