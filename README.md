@@ -1,6 +1,28 @@
 # Geogebra-Clon
 
-## Casos de Uso - CUs.
+## Idea
+
+Ofrecer un graficador (símil 1ra ver. del Geogebra) de rectas, vectores y puntos que sea capaz de manejar algunas operaciones que los involucren (por ej.: cambio de base, proyecciones, reflexiones, medición de distancias, ..., intersecciones).
+
+Como los objetos a tratar son lineales y, con excepción de las rectas, homogéneos; las operaciones previamente enumeradas pueden resolverse de la siguiente manera:
+
+1. La intersección:
+    - (si la hay y no es infinita) vendría de calcular el kernel (o núcleo) de una transformación (de matriz 2x3), cuya proyección central (si es posible, esto es: tercer componente del vector que genera el kernel != 0) da la solución (una tupla que representa un punto, el de intersección). 
+    - (si la intersección es también una recta) las triplas de la matriz de 2x3 serían L.D. (una se puede escribir en términos de la otra).
+    - (si no la hay) El tercer componente del vector que genera el kernel es igual a 0 y los vectores de la matriz son LI (de modo que el kernel tiene dim. = 1).
+2. Las proyecciones son productos internos.
+3. El cambio de base es una transformación lineal.
+4. Para calcular la menor distancia, dado que los objetos viven en $`\mathbb{R}^2`$:
+    - Si se sabe que hay intersección -> dist(L1, L2) = 0
+    - De no haberla, siempre y cuando se trate de rectas, la menor distancia va a estar dada por la longitud del segmento que tiene por extremos un punto de la L1 y otro de la L2, donde tales puntos pertenecen a una recta que es perpendicular a ambas (dado que L1 // L2 si L1 ∩ L2 = ∅  para todo L1, L2 C R2).
+    - La menor distancia entre un punto y una recta (dist(P1, L)) es semejante a calcular la distancia entre dos rectas (en este caso el punto P1 sería el punto de paso para una recta L' que es paralela a L), de modo que: dist(P1, L) = dist(L', L), donde L': cvdirL + P1 
+5. La longitud de los segmentos y de los vectores está dada por la norma 2 (euclídea) de la diferencia de los puntos que las describen (||P1 - P2||2).
+6. Las transformaciones (rotaciones, reflexión, …, etc.) respecto del origen, así como de los ejes del plano (x e y), se pueden implementar como matrices de 2x2; si se mueve el origen a otro punto se va a requerir de matrices de 3x3 (ya que la homogeneización de coordenadas sería necesaria).
+
+
+> Para más información: léase la sección [Intuición](Documentos/geometría.md)
+
+## Casos de Uso - CUs
 
 1. Crear el lienzo. x
     - Postcondition: Se creó el lienzo.
@@ -51,7 +73,7 @@
 
 > Estado: (x) caso de uso implementado; (x*) caso de uso implementado parcialmente
 
-## Detalles.
+## Detalles de la Solución
 
 1. Cantidad de Clases: 15 [(Ver)](Documentos/diagrama-clases.md)
 
@@ -78,6 +100,6 @@ Pantalla no. 2:
 
 ![Pantalla no. 2](Documentos/Pantallas/Pantalla-no-2.png)
 
-## Intuición.
+## Intuición
 
 [Intuición](Documentos/geometría.md)
