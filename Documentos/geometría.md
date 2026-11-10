@@ -1,11 +1,20 @@
 # Geogebra-Clon
+
+## Aclaración
+
 > Téngase por sentado que el presente software únicamente maneja: rectas, vectores y puntos en $`\mathbb{R}^2`$; por lo que el alcance de las operaciones enumeradas en la siguiente sección se limita a eso, por no decir que este documento no es un reemplazo al libro, no debe esperarse que lo sea y tampoco tiene la intención de serlo.
 >
 > Para más información se recomienda:
 > 
 > i) Para proyecciones vectoriales, escalares, cambios de base y distancias: "Introduction to Linear Algebra", de Gilbert Strang (5ta Edición 2016).
 > 
-> ii) Para coordenadas homogéneas y proyección central (temas mencionados en la primera parte): "Multiple View Geometry in computer vision", de Richard Hartley y Andrew Zisserman.
+> ii) Para coordenadas homogéneas y proyección central (temas mencionados en la primera parte): "Multiple View Geometry in computer vision", de Richard Hartley y Andrew Zisserman (la parte cero, para background, es más que suficiente para lo que se aborda en este documento).
+
+## Trasfondo
+
+> Este documento, por otro lado, representa una versión más prolija (no necesariamente uno a uno) del siguiente whiteboard: [Intuición - Whiteboard](https://miro.com/app/board/uXjVEd-pokg=/)
+>
+> Apréciese que algunos ítems de este documento no se encuentran en el whiteboard adjunto, así como algunos temas abordados y ejemplos presentes en este último fueron omitidos en la sección subsiguiente, ya que no eran del todo relevantes para generar intuición sobre el programa (por ej.: el algoritmo para invertir matrices se excluyó de este documento, ya que, si bien el programa lo precisa de forma emergente, no es un objetivo; una excepción se hizo para la parametrización, que mostró ser de utilidad para visualizar las rectas en el plano, y por eso figura en este documento).
 
 ## Intuición
 
