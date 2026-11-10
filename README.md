@@ -109,11 +109,13 @@ Pantalla no. 2:
 
 ### Abrir repositorio
 
-```cd 'Geogebra-Clon'```
+```cd 'Geogebra-Clon\src'```
 
 ### Ejecutar repositorio
 
 ```java Main.java```
+
+> Para JDK 22+
 
 ### App en ejecución:
 
