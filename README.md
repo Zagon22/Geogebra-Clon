@@ -20,7 +20,7 @@ Como los objetos a tratar son lineales y, con excepción de las rectas, homogén
 6. Las transformaciones (rotaciones, reflexión, …, etc.) respecto del origen, así como de los ejes del plano (x e y), se pueden implementar como matrices de 2x2; si se mueve el origen a otro punto se va a requerir de matrices de 3x3 (ya que la homogeneización de coordenadas sería necesaria).
 
 
-> Para más información: léase la sección [Intuición](Documentos/geometría.md)
+> Para más información: léase la sección [Intuición](Documentos/intuición.md)
 
 ## Casos de Uso - CUs
 
@@ -104,4 +104,4 @@ Pantalla no. 2:
 
 ## Intuición
 
-[Intuición](Documentos/geometría.md)
+[Intuición](Documentos/intuición.md)
