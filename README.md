@@ -19,7 +19,6 @@ Como los objetos a tratar son lineales y, con excepción de las rectas, homogén
 5. La longitud de los segmentos y de los vectores está dada por la norma 2 (euclídea) de la diferencia de los puntos que las describen ($`\lVert P_1 - P_2 \lVert_2`$).
 6. Las transformaciones (rotaciones, reflexión, …, etc.) respecto del origen, así como de los ejes del plano (x e y), se pueden implementar como matrices de 2x2; si se mueve el origen a otro punto se va a requerir de matrices de 3x3 (ya que la homogeneización de coordenadas sería necesaria).
 
-
 > Para más información: léase la sección [Intuición](Documentos/intuición.md)
 
 ## Casos de Uso - CUs
@@ -102,11 +101,21 @@ Pantalla no. 2:
 
 ![Pantalla no. 2](Documentos/Pantallas/Pantalla-no-2.png)
 
+## Correr la Aplicación
+
+### Clonar repositorio 
+
+```git clone https://github.com/Zagon22/Geogebra-Clon```
+
+### Abrir repositorio
+
+```cd 'Geogebra-Clon'```
+
+### Ejecutar repositorio
+
+```java Main.java```
+
 ### App en ejecución:
 
 [<img src="Documentos/Pantallas/Pantalla-no-1.png"  width="512" height="360"
 />](https://drive.google.com/file/d/1zVs3FHd2K05AEVbi2gFoOjTYErXXfZuP/view?usp=drive_link)
-
-## Intuición
-
-[Intuición](Documentos/intuición.md)
