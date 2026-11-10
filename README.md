@@ -24,6 +24,8 @@ Como los objetos a tratar son lineales y, con excepción de las rectas, homogén
 
 ## Casos de Uso - CUs
 
+> Secuencias: [Ver](Documentos/diagramas-secuencia.md)
+
 1. Crear el lienzo. x
     - Postcondition: Se creó el lienzo.
 2. Agrandar o achicar el lienzo (zoom in/out). x
@@ -71,7 +73,7 @@ Como los objetos a tratar son lineales y, con excepción de las rectas, homogén
     - Precondition: Se seleccionaron tres vectores (ref. caso no. 7), de los cuales uno es el vector a escribir en términos de la nueva base y los dos restantes la nueva base vectorial; y luego se hizo click en el botón «Cambiar Base».
     - Postcondition: Se dibujó un nuevo vector (ref. caso no. 6) escrito en términos de la base proporcionada.
 
-> Estado: (x) caso de uso implementado; (x*) caso de uso implementado parcialmente
+> Estado: (x) caso de uso implementado; (x*) caso de uso implementado parcialmente 
 
 ## Detalles de la Solución
 
