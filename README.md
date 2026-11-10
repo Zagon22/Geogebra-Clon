@@ -103,19 +103,37 @@ Pantalla no. 2:
 
 ## Correr la Aplicación
 
-### Clonar repositorio 
+### 1. Clonar repositorio 
 
 ```git clone https://github.com/Zagon22/Geogebra-Clon```
 
-### Abrir repositorio
+### Para JDK 22+
+
+### 2.1 a) Abrir repositorio en la carpeta "src"
 
 ```cd 'Geogebra-Clon\src'```
 
-### Ejecutar repositorio
+### 2.1 b) Ejecutar main
 
 ```java Main.java```
 
-> Para JDK 22+
+### Para versiones anteriores (cualquier OS)
+
+> Por cierto, para este caso es necesario tener ```Maven``` instalado, lo cual puede hacerse según lo detallado en la página oficial: [Maven](https://maven.apache.org/install.html)
+
+### 2.2 a) Abrir repositiorio
+
+```cd 'Geogebra-Clon'```
+
+### 2.2 b) Construir el archivo .jar
+
+```mvn clean package```
+
+### 2.2 c) Ejecutar el archivo .jar
+
+```java -jar target/geogebra-clon-1.0-SNAPSHOT.jar'```
+
+> Para correr la app sin tener que empaquetarla: ```mvn compile exec:java```
 
 ### App en ejecución:
 
