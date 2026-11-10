@@ -13,7 +13,7 @@ Como los objetos a tratar son lineales y, con excepción de las rectas, homogén
 2. Las proyecciones son productos internos.
 3. El cambio de base es una transformación lineal.
 4. Para calcular la menor distancia, dado que los objetos viven en $`\mathbb{R}^2`$:
-    - Si se sabe que hay intersección -> dist(L1, L2) = 0
+    - Si se sabe que hay intersección -> $`dist(L_1, L_2) = 0`$
     - De no haberla, siempre y cuando se trate de rectas, la menor distancia va a estar dada por la longitud del segmento que tiene por extremos un punto de la L1 y otro de la L2, donde tales puntos pertenecen a una recta que es perpendicular a ambas (dado que: $`L_1 \parallel L_2 \iff L_1 \cap L_2 = \emptyset \quad \forall: \ L_1, L_2 \subset \mathbb{R}^2`$).
     - La menor distancia entre un punto y una recta ($`dist(P_1, L)`$) es semejante a calcular la distancia entre dos rectas (en este caso el punto $`P_1`$ sería el punto de paso para una recta L' que es paralela a L), de modo que: $`dist(P_1, L) = dist(L', L)`$, donde $`L': \lambda \cdot \vec{v_1} + P_1`$ 
 5. La longitud de los segmentos y de los vectores está dada por la norma 2 (euclídea) de la diferencia de los puntos que las describen ($`\lVert P_1 - P_2 \lVert_2`$).
