@@ -131,7 +131,7 @@ Pantalla no. 2:
 
 ### 2.2 c) Ejecutar el archivo .jar
 
-```java -jar target/geogebra-clon-1.0-SNAPSHOT.jar'```
+```java -jar target/geogebra-clon-1.0-SNAPSHOT.jar```
 
 > Para correr la app sin tener que empaquetarla: ```mvn compile exec:java```
 
