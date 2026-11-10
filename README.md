@@ -90,7 +90,7 @@ Como los objetos a tratar son lineales y, con excepción de las rectas, homogén
 
 3. GoF Patterns: Observer - implementado para notificar a la vista de los cambios en el modelo, que hace un "push from below".
 
-4. Interfaces gráficas (pantallas): 2 - Principal y para seleccionar la ruta en donde guardar la captura de pantalla.
+4. Interfaces gráficas (pantallas): 2 - 1. Principal (lienzo + panel lateral de herramientas/controles) y 2. Para seleccionar la ruta en donde guardar la captura de pantalla.
 
 Pantalla no. 1:
 
