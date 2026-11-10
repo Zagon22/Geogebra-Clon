@@ -181,6 +181,8 @@ sequenceDiagram
             deactivate PC
         end
         deactivate G
+        C->>C: limpiarCampos()
+        C->>PC: setLabel(""), setTipo("Punto"), setCoordX(""), setCoordY(""), setCoordXf(""), setCoordYf(""), setNorma("")
     else No
         C-->>PC: no hace nada
     end
@@ -287,6 +289,8 @@ sequenceDiagram
                 PC->>PC: refrescarLista()
                 deactivate PC
             end
+        C->>C: limpiarCampos()
+        C->>PC: setLabel(""), setTipo("Punto"), setCoordX(""), setCoordY(""), setCoordXf(""), setCoordYf(""), setNorma("")
         end
         deactivate G
     end
