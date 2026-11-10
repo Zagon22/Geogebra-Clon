@@ -89,7 +89,7 @@ public class GestorObjetos {
         switch (operacion) {
             case "interseccion":
                 return "i_" + contadorPuntosInt.incrementAndGet();
-            case "projv":
+            case "projV":
                 return "projV_" + contadorVectoresProj.incrementAndGet();
             case "cambioB":
                 return "nV_" + contadorVectoresCb.incrementAndGet();
