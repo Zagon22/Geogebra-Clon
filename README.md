@@ -102,6 +102,11 @@ Pantalla no. 2:
 
 ![Pantalla no. 2](Documentos/Pantallas/Pantalla-no-2.png)
 
+### App en ejecución:
+
+[<img src="Documentos/Pantallas/Pantalla-no-1.png"  width="512" height="360"
+/>](https://drive.google.com/file/d/1zVs3FHd2K05AEVbi2gFoOjTYErXXfZuP/view?usp=drive_link)
+
 ## Intuición
 
 [Intuición](Documentos/intuición.md)
