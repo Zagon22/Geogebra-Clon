@@ -1,6 +1,30 @@
 # Geogebra-Clon
 
-## Casos de Uso - CUs.
+## Idea
+
+Ofrecer un graficador (símil 1ra ver. del Geogebra) de rectas, vectores y puntos que sea capaz de manejar algunas operaciones que los involucren (por ej.: cambio de base, proyecciones, reflexiones, medición de distancias, ..., intersecciones).
+
+Como los objetos a tratar son lineales y, con excepción de las rectas, homogéneos; las operaciones previamente enumeradas pueden resolverse de la siguiente manera:
+
+1. La intersección:
+    - (si la hay y no es infinita) vendría de calcular el kernel (o núcleo) de una transformación (de matriz 2x3), cuya proyección central (si es posible, esto es: tercer componente del vector que genera el kernel != 0) da la solución (una tupla que representa un punto, el de intersección). 
+    - (si la intersección es también una recta) las triplas de la matriz de 2x3 serían L.D. (una se puede escribir en términos de la otra).
+    - (si no la hay) El tercer componente del vector que genera el kernel es igual a 0 y los vectores de la matriz son LI (de modo que el kernel tiene dim. = 1).
+2. Las proyecciones son productos internos.
+3. El cambio de base es una transformación lineal.
+4. Para calcular la menor distancia, dado que los objetos viven en $`\mathbb{R}^2`$:
+    - Si se sabe que hay intersección -> $`dist(L_1, L_2) = 0`$
+    - De no haberla, siempre y cuando se trate de rectas, la menor distancia va a estar dada por la longitud del segmento que tiene por extremos un punto de la $`L_1`$ y otro de la $`L_2`$, donde tales puntos pertenecen a una recta que es perpendicular a ambas (dado que: $`L_1 \parallel L_2 \iff L_1 \cap L_2 = \emptyset \quad \forall: \ L_1, L_2 \subset \mathbb{R}^2`$).
+    - La menor distancia entre un punto y una recta ($`dist(P_1, L)`$) es semejante a calcular la distancia entre dos rectas (en este caso el punto $`P_1`$ sería el punto de paso para una recta L' que es paralela a L), de modo que: $`dist(P_1, L) = dist(L', L)`$, donde $`L': \lambda \cdot \vec{v_1} + P_1`$ 
+5. La longitud de los segmentos y de los vectores está dada por la norma 2 (euclídea) de la diferencia de los puntos que las describen ($`\lVert P_1 - P_2 \lVert_2`$).
+6. Las transformaciones (rotaciones, reflexión, …, etc.) respecto del origen, así como de los ejes del plano (x e y), se pueden implementar como matrices de 2x2; si se mueve el origen a otro punto se va a requerir de matrices de 3x3 (ya que la homogeneización de coordenadas sería necesaria).
+
+
+> Para más información: léase la sección [Intuición](Documentos/geometría.md)
+
+## Casos de Uso - CUs
+
+> Secuencias: [Ver](Documentos/diagramas-secuencia.md)
 
 1. Crear el lienzo. x
     - Postcondition: Se creó el lienzo.
@@ -49,11 +73,13 @@
     - Precondition: Se seleccionaron tres vectores (ref. caso no. 7), de los cuales uno es el vector a escribir en términos de la nueva base y los dos restantes la nueva base vectorial; y luego se hizo click en el botón «Cambiar Base».
     - Postcondition: Se dibujó un nuevo vector (ref. caso no. 6) escrito en términos de la base proporcionada.
 
-> Estado: (x) caso de uso implementado; (x*) caso de uso implementado parcialmente
+> Estado: (x) caso de uso implementado; (x*) caso de uso implementado parcialmente 
 
-## Detalles.
+## Detalles de la Solución
 
-1. Cantidad de Clases: 15. Desambiguación:
+1. Cantidad de Clases: 15 [(Ver)](Documentos/diagrama-clases.md)
+
+   Desambiguación:
 
     - Modelo: ObjetoGeo, ObjetoLineal, Punto, Recta, Segmento, VectorGeo, GestorObjetos, Curva, ModeloListener. (9 clases)
     - Controlador (monolítico - 1 clase)
@@ -66,16 +92,16 @@
 
 3. GoF Patterns: Observer - implementado para notificar a la vista de los cambios en el modelo, que hace un "push from below".
 
-4. Interfaces gráficas (pantallas): 2 - Principal y para seleccionar la ruta en donde guardar la captura de pantalla.
+4. Interfaces gráficas (pantallas): 2 - 1. Principal (lienzo + panel lateral de herramientas/controles) y 2. Para seleccionar la ruta en donde guardar la captura de pantalla.
 
 Pantalla no. 1:
 
-![Pantalla no. 1](Pantalla-no-1.png)
+![Pantalla no. 1](Documentos/Pantallas/Pantalla-no-1.png)
 
 Pantalla no. 2:
 
-![Pantalla no. 2](Pantalla-no-2.png)
+![Pantalla no. 2](Documentos/Pantallas/Pantalla-no-2.png)
 
-## Intuición.
+## Intuición
 
-[Intuición](geometría.md)
+[Intuición](Documentos/geometría.md)
