@@ -8,7 +8,7 @@ public class Recta extends ObjetoLineal<Recta, Segmento> implements Curva<Matriz
 
     public Recta(double x1, double x2, double y1, double y2) {
         if(x1 == x2 && y1 == y2) {
-            throw new IllegalArgumentException("Se paso el mismo punto! Los puntos deben ser diferentes...");
+            throw new IllegalArgumentException("Se pasó el mismo punto! Los puntos deben ser diferentes...");
         }
 
         super(x1, x2, y1, y2);
@@ -18,7 +18,7 @@ public class Recta extends ObjetoLineal<Recta, Segmento> implements Curva<Matriz
     public Segmento distanciaA(Recta a) {
         Double tercerCoord = this.productoCruzHomogeneo(a).getElemento(0, 2);
         if(tercerCoord != 0) { 
-            throw new ExcepcionDistanciaCero("Las rectas tienen interseccion: su distancia es 0"); 
+            throw new ExcepcionDistanciaCero("Las rectas tienen intersección: su distancia es 0"); 
         } // si existe interseccion, y esta es un punto, la distancia es igual a 0.
         if(a.intercepto() == this.intercepto() && a.pendiente() == this.pendiente()) {
             throw new ExcepcionDistanciaCero("Las rectas son coincidentes: su distancia es 0");
@@ -38,7 +38,7 @@ public class Recta extends ObjetoLineal<Recta, Segmento> implements Curva<Matriz
     public MatrizN<Double> parametrizar()
     {
         if(this.direccion().getX() == 0 && this.direccion().getY() == 0) {
-            throw new IllegalArgumentException("La direccion no puede ser igual a cero...");
+            throw new IllegalArgumentException("La dirección no puede ser igual a cero...");
         }
         MatrizN<Double> pLinea = new MatrizN<>(2, 2);
         // Direccion
@@ -57,7 +57,7 @@ public class Recta extends ObjetoLineal<Recta, Segmento> implements Curva<Matriz
         MatrizN<Double> crossP = this.productoCruzHomogeneo(r);
 
         if(crossP.getElemento(0, 2) == 0) { 
-            throw new InterseccionDistintaAPunto("La interseccion es vacia o la recta dada!"); 
+            throw new InterseccionDistintaAPunto("La intersección es vacía o la recta dada!"); 
         }
 
         double c1 = crossP.getElemento(0, 0) / crossP.getElemento(0, 2);
