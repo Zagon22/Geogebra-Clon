@@ -74,7 +74,7 @@ public class VectorGeo extends ObjetoLineal<VectorGeo, VectorGeo> {
         m.setElemento(1, 1, b2.getY());
 
         if(m.calcularDeterminante() == 0) {
-            throw new ExcepcionBaseLD("Los vectores dados no forman una base de R2");
+            throw new ExcepcionBaseLD("Los vectores dados no forman una base de R^2");
         }
 
         MatrizN<Double> mI = m.calcularInversa();
