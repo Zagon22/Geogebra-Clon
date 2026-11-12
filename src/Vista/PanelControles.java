@@ -59,11 +59,11 @@ public class PanelControles extends JPanel implements ModeloListener {
         add(Box.createVerticalStrut(8));
         add(fila(botonInterseccion, botonDistancia, botonCambiarBase));
         add(Box.createVerticalStrut(8));
-        add(fila("Reflexion", reflexion));
+        add(fila("Reflexión", reflexion));
         add(Box.createVerticalStrut(4));
         add(botonReflexion);
         add(Box.createVerticalStrut(8));
-        add(fila("Proyeccion", proyeccion));
+        add(fila("Proyección", proyeccion));
         add(Box.createVerticalStrut(4));
         add(botonProyectar);
         add(Box.createVerticalStrut(8));
