@@ -66,7 +66,7 @@ public class Controlador {
     private void onInterseccion() {
         List<String> sel = seleccionMultiple();
         if (sel == null) return;
-        if (sel.size() != 2) { error("Selecciona dos objetos"); return;}
+        if (sel.size() != 2) { error("Seleccioná dos objetos"); return;}
 
         String label1 = sel.get(0).substring(2);
         String label2 = sel.get(1).substring(2);
@@ -74,7 +74,7 @@ public class Controlador {
         try {
             Recta r1 = modelo.buscarRecta(label1);
             Recta r2 = modelo.buscarRecta(label2);
-            if (r1 == null || r2 == null) { error("Selecciona dos rectas"); return; }
+            if (r1 == null || r2 == null) { error("Seleccioná dos rectas"); return; }
             Punto p = r1.interseccion(r2);
             modelo.agregarPunto(modelo.crearLabel("interseccion"), p);
         } catch (InterseccionDistintaAPunto e) {
@@ -121,19 +121,19 @@ public class Controlador {
                 if(reflexion.equals("Eje-x")) v.reflejarSobreX(); modelo.agregarVector(label, v);
                 if(reflexion.equals("Eje-y")) v.reflejarSobreY(); modelo.agregarVector(label, v);
             }
-            default -> error("Al obj. seleccionado no le corresponde esta transformacion");
+            default -> error("Al obj. seleccionado no le corresponde esta transformación");
         }
     }
 
     private void onDistancia() { 
         List<String> sel = seleccionMultiple();
         if(sel == null) return;
-        if(sel.size() != 2) { error("Selecciona dos objetos"); return;}
+        if(sel.size() != 2) { error("Seleccioná dos objetos"); return; }
 
         String label = sel.get(0).substring(2), type = sel.get(0).substring(0, 1);
         String label1 = sel.get(1).substring(2), type1 = sel.get(1).substring(0, 1);
 
-        if(!type.equals(type1)) {error("Combinacion invalida"); return;}
+        if(!type.equals(type1)) { error("Combinación inválida!"); return; }
 
         try {
             switch(type) {
@@ -164,13 +164,13 @@ public class Controlador {
     private void onCambioBase() {
         List<String> sel = seleccionMultiple();
         if(sel == null) return;
-        if(sel.size() != 3) { error("Selecciona tres objetos"); return;}
+        if(sel.size() != 3) { error("Seleccioná tres objetos"); return;}
 
         String label = sel.get(0).substring(2), type = sel.get(0).substring(0, 1);
         String label1 = sel.get(1).substring(2), type1 = sel.get(1).substring(0, 1);
         String label2 = sel.get(2).substring(2), type2 = sel.get(2).substring(0, 1);
 
-        if(!type.equals(type1) || !type1.equals(type2) || !type.equals(type2)) {error("Los objetos deben ser vectores"); return;}
+        if(!type.equals(type1) || !type1.equals(type2) || !type.equals(type2)) { error("Los objetos deben ser vectores"); return; }
 
         try {
             VectorGeo v = modelo.buscarVector(label);
@@ -186,7 +186,7 @@ public class Controlador {
     private void onProyeccion() {
         List<String> sel = seleccionMultiple();
         if(sel == null) return;
-        if(sel.size() != 2) { error("Selecciona dos objetos"); return;}
+        if(sel.size() != 2) { error("Seleccioná dos objetos"); return;}
 
         String label = sel.get(0).substring(2), type = sel.get(0).substring(0, 1);
         String label1 = sel.get(1).substring(2), type1 = sel.get(1).substring(0, 1);
@@ -318,14 +318,14 @@ public class Controlador {
     // Devuelve las etiquetas del par de objetos seleccionadas + el prefijo
     private List<String> seleccionMultiple() {
         List<String> sel = vista.getPanelControles().getSeleccionEnOrden();
-        if (sel.size() < 2) { error("Selecciona mas de un objeto"); return null; }
+        if (sel.size() < 2) { error("Seleccioná más de un objeto"); return null; }
         return sel;
     } // Seleccion Multiple ordenada (antes solo seleccionaba pares)
 
     // Devuelve la etiqueta + el prefijo
     private String seleccion() {
         int idx = vista.getPanelControles().getLista().getSelectedIndex();
-        if (idx < 0) { error("Selecciona un objeto"); return null; }
+        if (idx < 0) { error("Seleccioná un objeto"); return null; }
         String a = vista.getPanelControles().getLista().getModel().getElementAt(idx);
         return a;
     }
