@@ -150,7 +150,7 @@ public class Lienzo extends JPanel implements ModeloListener {
     public BufferedImage capturar() {
         int w = getWidth(); int h = getHeight();
         if(w <= 0 || h <= 0) {
-            throw new IllegalStateException("El lienzo no tiene tamano");
+            throw new IllegalStateException("El lienzo no tiene tamaño");
         }
 
         BufferedImage img = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
