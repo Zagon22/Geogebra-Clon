@@ -2,7 +2,7 @@
 
 ## Idea
 
-Ofrecer un graficador (símil 1ra ver. del Geogebra) de rectas, vectores y puntos que sea capaz de manejar algunas operaciones que los involucren (por ej.: cambio de base, proyecciones, reflexiones, medición de distancias, ..., intersecciones).
+Ofrecer un graficador (símil 1ra ver. del Geogebra) de rectas, vectores y puntos que sea capaz de manejar algunas operaciones que los involucren (por ej.: cambio de base, proyecciones, reflexiones, medición de distancias, [...], intersecciones).
 
 Como los objetos a tratar son lineales y, con excepción de las rectas, homogéneos; las operaciones previamente enumeradas pueden resolverse de la siguiente manera:
 
@@ -85,7 +85,7 @@ Como los objetos a tratar son lineales y, con excepción de las rectas, homogén
     - Vista: VistaPrincipal, Lienzo, PanelControles y Transformación. (4 clases)
 
     ∴ 14 clases MVC + 1 clase «ExportadorImagen» para escribir en el disco.
-    -> 15 clases totales, de las cuales 2 son abstractas y otro par representan interfaces -> 4 puntos de extensibilidad.
+    → 15 clases totales, de las cuales 2 son abstractas y otro par representan interfaces → 4 puntos de extensibilidad.
 
 2. PLUS: Paquete Matriz y Excepciones propias («ExcepcionGeometrica» ← «ExcepcionBaseLD», «ExcepcionDistanciaCero», «InterseccionDistintaAPunto»).
 
