@@ -23,7 +23,7 @@ Como los objetos a tratar son lineales y, con excepción de las rectas, homogén
 
 ## Casos de Uso - CUs
 
-> Secuencias: [Ver](Documentos/diagramas-secuencia.md)
+> Secuencias: [Ver](Documentos/diagramas-secuencia.md) | Diagrama de CUs: [Ver](Documentos/diagrama-casos-de-uso.md)
 
 1. Crear el lienzo. x
     - Postcondition: Se creó el lienzo.
@@ -37,19 +37,19 @@ Como los objetos a tratar son lineales y, con excepción de las rectas, homogén
     - Precondition: (ref. caso no. 1), el usuario seleccionó el botón «Capturar» y definió la ruta en donde guardar la captura.
     - Postcondition: Se guardó la captura en el directorio dado.
 5. Limpiar el lienzo. x
-    - Precondition: (ref. caso no. 1), se hizo click en el botón «Limpiar» y se confirmó la acción en el pop up (o modal).
+    - Precondition: (ref. caso no. 1), se hizo click en el botón «Limpiar» y se confirmó la acción en el pop up (o modal/ventana emergente).
     - Postcondition: Se eliminaron todos los objetos en el plano, se reiniciaron los índices de los contadores y se limpiaron los campos del panel de controles.
 6. Dibujar objetos. x
-    - Precondition: (ref. caso no. 1), el usuario seleccionó el tipo de objeto, completo los campos pertinentes e hizo submit de esa información (se clickeó el botón «Agregar»).
+    - Precondition: (ref. caso no. 1), el usuario seleccionó el tipo de objeto, completó los campos pertinentes e hizo submit de esa información (se clickeó el botón «Agregar»).
     - Postcondition: Se agregó un objeto en el panel lateral y se dibujó la figura especificada.
 7. Seleccionar objetos. x
     - Precondition: (ref. caso no. 1) y se crearon objetos en el plano (ref. caso no. 6).
     - Postcondition: Se seleccionó el objeto y se habilitaron los campos pertinentes para esa clase de objetos.
 8. Eliminar objetos. x
     - Precondition: (ref. casos no. 1 y 6), se seleccionó el objeto (ref. caso no. 7) y se hizo click en el botón «Eliminar».
-    - Postcondition: Se eliminó el objeto seleccionado y se limpiaron los campos del panel de controles.
+    - Postcondition: Se eliminó el objeto seleccionado y se limpiaron los campos asociados en el panel de controles.
 9. Modificar objetos. x
-    - Precondition: Se seleccionó un objeto existente (ref. caso no. 7), se modificaron los campos pertinentes y se hizo submit de esa información (click en el botón «Agregar»)
+    - Precondition: Se seleccionó un objeto existente (ref. caso no. 7), se recuperó la información del objeto (ref. caso no. 10), se modificaron los campos pertinentes y se hizo submit de esa información (click en el botón «Agregar»)
     - Postcondition: Se modificó el objeto seleccionado. 
 10. Recuperar la información del objeto. x
     - Precondition: Se seleccionó un objeto existente (ref. caso no. 7).
@@ -62,10 +62,10 @@ Como los objetos a tratar son lineales y, con excepción de las rectas, homogén
     - Postcondition: Se modificó el objeto seleccionado (ref. caso no. 9) según lo especificado por la transformación seleccionada.
 13. Intersectar curvas. x* (sólo rectas)
     - Precondition: Se seleccionaron dos rectas (ref. caso no. 7) y se hizo click en el botón de leyenda «Intersección».
-    - Postcondition: Se dibujó un punto que señala la intersección (si la hay) (ref. caso no. 6).
+    - Postcondition: Se dibujó (ref. caso no. 6) un punto que señala la intersección (si la hay).
 14. Proyectar vectores. x
     - Precondition: Se seleccionaron dos vectores (ref. caso no. 7), se especificó el tipo de proyección: 1) escalar o 2) vectorial; y se hizo click en el botón «Proyectar».
-    - Postcondition: Se dibujó (ref. caso no. 6) un: 
+    - Postcondition: Se normalizó el vector sobre el que se hizo la proyección (ref. caso no. 9) y se dibujó (ref. caso no. 6) un: 
         - caso no. 1) Segmento cuya magnitud representa la coordenada de la proyección escalar de un vector a sobre vector b; 
         - o caso no. 2) Vector que representa la proyección vectorial del vector a sobre b. 
 15. Cambiar la base de un vector. x
@@ -74,7 +74,7 @@ Como los objetos a tratar son lineales y, con excepción de las rectas, homogén
 
 > Estado: (x) caso de uso implementado; (x*) caso de uso implementado parcialmente
 
-> P.S.: Se entiende que para todos los CUs es necesario que se haya inicializado el lienzo (caso no. 1), así que éste es una precondición de los CUs 02 a 15, aunque no se haya precisado así para todos ellos
+> Observación: se entiende que para todos los CUs es necesario que se haya inicializado el lienzo (caso no. 1), así que éste es una precondición para los CUs 02 a 15, incluso aunque así no se haya precisado para todos ellos.
 
 ## Detalles de la Solución
 
