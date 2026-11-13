@@ -38,7 +38,7 @@ Como los objetos a tratar son lineales y, con excepción de las rectas, homogén
     - Postcondition: Se guardó la captura en el directorio dado.
 5. Limpiar el lienzo. x
     - Precondition: (ref. caso no. 1), se hizo click en el botón «Limpiar» y se confirmó la acción en el pop up (o modal).
-    - Postcondition: Se eliminaron todos los objetos en el plano y se reiniciaron los índices de los contadores.
+    - Postcondition: Se eliminaron todos los objetos en el plano, se reiniciaron los índices de los contadores y se limpiaron los campos del panel de controles.
 6. Dibujar objetos. x
     - Precondition: (ref. caso no. 1), el usuario seleccionó el tipo de objeto, completo los campos pertinentes e hizo submit de esa información (se clickeó el botón «Agregar»).
     - Postcondition: Se agregó un objeto en el panel lateral y se dibujó la figura especificada.
@@ -47,7 +47,7 @@ Como los objetos a tratar son lineales y, con excepción de las rectas, homogén
     - Postcondition: Se seleccionó el objeto y se habilitaron los campos pertinentes para esa clase de objetos.
 8. Eliminar objetos. x
     - Precondition: (ref. casos no. 1 y 6), se seleccionó el objeto (ref. caso no. 7) y se hizo click en el botón «Eliminar».
-    - Postcondition: Se eliminó el objeto seleccionado.
+    - Postcondition: Se eliminó el objeto seleccionado y se limpiaron los campos del panel de controles.
 9. Modificar objetos. x
     - Precondition: Se seleccionó un objeto existente (ref. caso no. 7), se modificaron los campos pertinentes y se hizo submit de esa información (click en el botón «Agregar»)
     - Postcondition: Se modificó el objeto seleccionado. 
@@ -56,7 +56,7 @@ Como los objetos a tratar son lineales y, con excepción de las rectas, homogén
     - Postcondition: Se devolvió la información actualizada de ese objeto.
 11. Dar la distancia entre objetos. x
     - Precondition: Se seleccionaron dos objetos (ref. caso no. 7) en alguna de las siguientes combinaciones: 1) Punto-Punto, 2) Recta-Recta, o 3) Vector-Vector; y eventualmente se seleccionó el botón «Distancia».
-    - Postcondition: Se dibujó en el plano un nuevo segmento cuya norma es la distancia entre los objetos dados (combinaciones no. 1 y 2); o se dibujó un vector (combinación no. 3).
+    - Postcondition: Se dibujó (ref. caso no. 6) en el plano un nuevo segmento cuya norma es la distancia entre los objetos dados (combinaciones no. 1 y 2); o se dibujó un vector (combinación no. 3).
 12. Transformar objetos. x* (sólo reflexión)
     - Precondition: Se seleccionó un objeto (ref. caso no. 7), que puede tratarse de un vector o una recta, se especificó el tipo de transformación y se hizo el submit (a través de haber clickeado en «Reflejar»).
     - Postcondition: Se modificó el objeto seleccionado (ref. caso no. 9) según lo especificado por la transformación seleccionada.
@@ -72,7 +72,9 @@ Como los objetos a tratar son lineales y, con excepción de las rectas, homogén
     - Precondition: Se seleccionaron tres vectores (ref. caso no. 7), de los cuales uno es el vector a escribir en términos de la nueva base y los dos restantes la nueva base vectorial; y luego se hizo click en el botón «Cambiar Base».
     - Postcondition: Se dibujó un nuevo vector (ref. caso no. 6) escrito en términos de la base proporcionada.
 
-> Estado: (x) caso de uso implementado; (x*) caso de uso implementado parcialmente 
+> Estado: (x) caso de uso implementado; (x*) caso de uso implementado parcialmente
+
+> P.S.: Se entiende que para todos los CUs es necesario que se haya inicializado el lienzo (caso no. 1), así que éste es una precondición de los CUs 02 a 15, aunque no se haya precisado así para todos ellos
 
 ## Detalles de la Solución
 
@@ -119,7 +121,7 @@ Pantalla no. 2:
 
 ### Para versiones anteriores (cualquier OS)
 
-> Por cierto, para este caso es necesario tener ```Maven``` instalado, lo cual puede hacerse según lo detallado en la página oficial: [Maven](https://maven.apache.org/install.html)
+> Para este caso es necesario tener ```Maven``` instalado, lo cual puede hacerse según lo detallado en la página oficial: [Maven](https://maven.apache.org/install.html)
 
 ### 2.2 a) Abrir repositiorio
 
