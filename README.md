@@ -9,7 +9,7 @@ Como los objetos a tratar son lineales y, con excepción de las rectas, homogén
 1. La intersección:
     - (si la hay y no es infinita) vendría de calcular el kernel (o núcleo) de una transformación (de matriz 2x3), cuya proyección central (si es posible, esto es: tercer componente del vector que genera el kernel != 0) da la solución (una tupla que representa un punto, el de intersección). 
     - (si la intersección es también una recta) las triplas de la matriz de 2x3 serían L.D. (una se puede escribir en términos de la otra).
-    - (si no la hay) El tercer componente del vector que genera el kernel es igual a 0 y los vectores de la matriz son LI (de modo que el kernel tiene dim. = 1).
+    - (si no la hay) El tercer componente del vector que genera el kernel es igual a 0 y los vectores de la matriz son L.I. (de modo que el kernel tiene dim. = 1).
 2. Las proyecciones son productos internos.
 3. El cambio de base es una transformación lineal.
 4. Para calcular la menor distancia, dado que los objetos viven en $`\mathbb{R}^2`$:
@@ -49,7 +49,7 @@ Como los objetos a tratar son lineales y, con excepción de las rectas, homogén
     - Precondition: (ref. casos no. 1 y 6), se seleccionó el objeto (ref. caso no. 7) y se hizo click en el botón «Eliminar».
     - Postcondition: Se eliminó el objeto seleccionado y se limpiaron los campos asociados en el panel de controles.
 9. Modificar objetos. x
-    - Precondition: Se seleccionó un objeto existente (ref. caso no. 7), se recuperó la información del objeto (ref. caso no. 10), se modificaron los campos pertinentes y se hizo submit de esa información (click en el botón «Agregar»)
+    - Precondition: Se seleccionó un objeto existente (ref. caso no. 7), se recuperó la información del objeto (ref. caso no. 10), se modificaron los campos pertinentes y se hizo submit de esa información (click en el botón «Agregar»).
     - Postcondition: Se modificó el objeto seleccionado. 
 10. Recuperar la información del objeto. x
     - Precondition: Se seleccionó un objeto existente (ref. caso no. 7).
